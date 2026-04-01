@@ -12,6 +12,8 @@
       
       
       
+        <link rel="next" href="quick_start/">
+      
       
         
       
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#synthetic" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              Home
             
           </span>
         </div>
@@ -180,7 +182,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to MkDocs
+    Home
   
 
     
@@ -198,7 +200,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to MkDocs
+    Home
   
 
     
@@ -224,10 +226,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commands
+        Features
       
     </span>
   </a>
@@ -235,10 +237,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Project layout
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
       
     </span>
   </a>
@@ -249,6 +273,141 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="network_and_drug_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network & Drug Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="solvers_and_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced_workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -280,10 +439,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commands
+        Features
       
     </span>
   </a>
@@ -291,10 +450,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Project layout
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
       
     </span>
   </a>
@@ -318,20 +499,57 @@
 
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="synthetic">Synthetic</h1>
+<p>Synthetic is a library for generating virtual cell data using ODE models based on biochemical laws common in cancer cell signaling networks. It creates datasets compatible with scikit-learn's <code>make_regression</code> format.</p>
+<h2 id="features">Features</h2>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li><strong>Hierarchical network generation</strong> with configurable degree cascades and feedback regulation</li>
+<li><strong>Drug response modeling</strong> with customizable drug mechanisms (up/down regulation)</li>
+<li><strong>Multiple solver backends</strong> (SciPy, libRoadRunner, HTTP)</li>
+<li><strong>Biologically plausible parameters</strong> via kinetic parameter tuning</li>
+<li><strong>Scikit-learn compatible</strong> datasets for ML benchmarking</li>
+<li><strong>SBML/Antimony export</strong> for interoperability with other tools</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-python">from synthetic import Builder, make_dataset_drug_response
+
+vc = Builder.specify(degree_cascades=[3, 5], random_seed=42)
+X, y = make_dataset_drug_response(n=1000, cell_model=vc, target_specie='Oa')
+</code></pre>
+<p>Head to the <a href="quick_start/">Quick Start</a> guide to get started.</p>
+<h2 id="documentation">Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="quick_start/">Quick Start</a></td>
+<td>Installation and first dataset in 3 lines</td>
+</tr>
+<tr>
+<td><a href="network_and_drug_design/">Network &amp; Drug Design</a></td>
+<td>Degree cascades, feedback, drug mechanisms, combination therapy</td>
+</tr>
+<tr>
+<td><a href="solvers_and_simulation/">Solvers &amp; Simulation</a></td>
+<td>Solver backends, timecourse simulation, HTTP solver</td>
+</tr>
+<tr>
+<td><a href="data_generation/">Data Generation</a></td>
+<td>Perturbation strategies, extended formats, feature analysis</td>
+</tr>
+<tr>
+<td><a href="advanced_workflows/">Advanced Workflows</a></td>
+<td>Kinetic tuning, parameter estimation, model export, ML benchmarking</td>
+</tr>
+</tbody>
+</table>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">pip install synthetic-models
 </code></pre>
 
 

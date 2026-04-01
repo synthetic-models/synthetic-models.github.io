@@ -1,0 +1,983 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://synthetic-models.github.io/solvers_and_simulation/">
+      
+      
+        <link rel="prev" href="../network_and_drug_design/">
+      
+      
+        <link rel="next" href="../data_generation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Solvers & Simulation - Synthetic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solvers-simulation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Synthetic" class="md-header__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Synthetic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solvers & Simulation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Synthetic" class="md-nav__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Synthetic
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_and_drug_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network & Drug Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Simulation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solver-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-built-in-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the Built-in Solver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-solver-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct Solver Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Direct Solver Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scipysolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScipySolver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roadrunnersolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RoadrunnerSolver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timecourse-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timecourse Simulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timecourse Simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-solvers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing Solvers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-solver-for-remote-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Solver for Remote Simulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Solver for Remote Simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Selection Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solver-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-built-in-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the Built-in Solver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-solver-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct Solver Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Direct Solver Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scipysolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScipySolver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roadrunnersolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RoadrunnerSolver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timecourse-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timecourse Simulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timecourse Simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-solvers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing Solvers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-solver-for-remote-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Solver for Remote Simulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Solver for Remote Simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Selection Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="solvers-simulation">Solvers &amp; Simulation</h1>
+<h2 id="solver-overview">Solver Overview</h2>
+<p>Synthetic provides three solver backends for ODE simulation:</p>
+<table>
+<thead>
+<tr>
+<th>Solver</th>
+<th>Input Format</th>
+<th>Features</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ScipySolver</strong></td>
+<td>Antimony</td>
+<td>JIT compilation via numba, fast batch</td>
+<td>Default, parameter sweeps</td>
+</tr>
+<tr>
+<td><strong>RoadrunnerSolver</strong></td>
+<td>SBML</td>
+<td>Full SBML support, robust</td>
+<td>Complex models, single simulations</td>
+</tr>
+<tr>
+<td><strong>HTTPSolver</strong></td>
+<td>HTTP API</td>
+<td>Remote simulation, distributed computing</td>
+<td>Server-based workflows</td>
+</tr>
+</tbody>
+</table>
+<h2 id="using-the-built-in-solver">Using the Built-in Solver</h2>
+<p><code>make_dataset_drug_response</code> handles solver creation internally. Choose the backend with <code>solver_type</code>:</p>
+<pre><code class="language-python">from synthetic import Builder, make_dataset_drug_response
+
+vc = Builder.specify(degree_cascades=[1, 2, 5], random_seed=42)
+
+# Default: ScipySolver (fast, with JIT)
+X, y = make_dataset_drug_response(n=100, cell_model=vc, solver_type='scipy', jit=True)
+
+# Alternative: RoadrunnerSolver
+X, y = make_dataset_drug_response(n=100, cell_model=vc, solver_type='roadrunner')
+</code></pre>
+<h2 id="direct-solver-usage">Direct Solver Usage</h2>
+<p>For custom simulation workflows, use solvers directly.</p>
+<h3 id="scipysolver">ScipySolver</h3>
+<p>Uses <code>scipy.integrate.odeint</code> with optional JIT compilation:</p>
+<pre><code class="language-python">from synthetic import Builder
+from synthetic.Solver.ScipySolver import ScipySolver
+
+vc = Builder.specify(degree_cascades=[2, 3, 4], random_seed=42)
+
+# Get Antimony model string
+antimony = vc.model.get_antimony_model()
+
+# Compile and simulate
+solver = ScipySolver()
+solver.compile(antimony, jit=True)  # Enable JIT for faster execution
+results = solver.simulate(start=0, stop=10000, step=50)
+
+print(results.head())
+</code></pre>
+<h3 id="roadrunnersolver">RoadrunnerSolver</h3>
+<p>Uses libRoadRunner for SBML simulation. Requires SBML format (not Antimony):</p>
+<pre><code class="language-python">from synthetic.Solver.RoadrunnerSolver import RoadrunnerSolver
+
+# Get SBML model string
+sbml = vc.model.get_sbml_model()
+
+solver = RoadrunnerSolver()
+solver.compile(sbml)
+results = solver.simulate(start=0, stop=10000, step=50)
+</code></pre>
+<h3 id="simulation-output">Simulation Output</h3>
+<p>Both solvers return a pandas DataFrame with a <code>time</code> column and one column per species:</p>
+<pre><code>       time    R1_1   R1_1a    I1_1   I1_1a      O      Oa
+0       0.0  100.00    0.00  100.00    0.00  100.0    0.0
+1      50.0   95.23    4.77   98.10    1.90   99.5    0.5
+2     100.0   91.50    8.50   96.40    3.60   98.8    1.2
+...
+</code></pre>
+<h2 id="timecourse-simulation">Timecourse Simulation</h2>
+<p>Simulate and visualize species dynamics over time. The vertical dashed line marks drug onset:</p>
+<p><img alt="Timecourse simulation with ScipySolver" src="../images/timecourse_scipy.png" /></p>
+<pre><code class="language-python">from synthetic import Builder
+from synthetic.Solver.ScipySolver import ScipySolver
+import matplotlib.pyplot as plt
+
+vc = Builder.specify(degree_cascades=[2, 3, 4], random_seed=42)
+
+antimony = vc.model.get_antimony_model()
+solver = ScipySolver()
+solver.compile(antimony, jit=False)
+timecourse = solver.simulate(start=0, stop=10000, step=50)
+
+# Plot outcome dynamics
+fig, ax = plt.subplots()
+ax.plot(timecourse['time'], timecourse['O'], label='O (inactive)')
+ax.plot(timecourse['time'], timecourse['Oa'], label='Oa (active)')
+ax.axvline(x=5000, color='gray', linestyle='--', label='Drug onset')
+ax.set_xlabel('Time')
+ax.set_ylabel('Concentration')
+ax.legend()
+plt.show()
+</code></pre>
+<h3 id="comparing-solvers">Comparing Solvers</h3>
+<p>Run the same simulation with both solvers to compare results. Both produce identical dynamics:</p>
+<p><img alt="Timecourse simulation with RoadrunnerSolver" src="../images/timecourse_roadrunner.png" /></p>
+<pre><code class="language-python">from synthetic.Solver.ScipySolver import ScipySolver
+from synthetic.Solver.RoadrunnerSolver import RoadrunnerSolver
+
+# ScipySolver
+solver_scipy = ScipySolver()
+solver_scipy.compile(vc.model.get_antimony_model(), jit=False)
+tc_scipy = solver_scipy.simulate(start=0, stop=10000, step=50)
+
+# RoadrunnerSolver
+solver_rr = RoadrunnerSolver()
+solver_rr.compile(vc.model.get_sbml_model())
+tc_rr = solver_rr.simulate(start=0, stop=10000, step=50)
+
+# Compare outcome at final timepoint
+print(f&quot;ScipySolver Oa: {tc_scipy['Oa'].iloc[-1]:.4f}&quot;)
+print(f&quot;RoadrunnerSolver Oa: {tc_rr['Oa'].iloc[-1]:.4f}&quot;)
+</code></pre>
+<h2 id="http-solver-for-remote-simulation">HTTP Solver for Remote Simulation</h2>
+<p>The <code>HTTPSolver</code> sends simulation requests to a remote server via HTTP. This is useful for distributed computing or when the simulation engine runs on a separate machine.</p>
+<h3 id="client-usage">Client Usage</h3>
+<pre><code class="language-python">from synthetic.Solver.HTTPSolver import HTTPSolver
+
+solver = HTTPSolver()
+
+# Connect and validate endpoint
+solver.compile(&quot;http://localhost:8000/simulate&quot;)
+
+# Get default states and parameters
+states = solver.get_state_defaults()
+params = solver.get_parameter_defaults()
+
+# Override values
+solver.set_state_values({&quot;R1_1&quot;: 1000.0})
+solver.set_parameter_values({&quot;Km_J0&quot;: 10.0})
+
+# Run simulation
+results = solver.simulate(start=0, stop=60, step=0.5)
+</code></pre>
+<h3 id="server-setup">Server Setup</h3>
+<p>The HTTP solver requires a server implementing the simulation API. See <code>examples/httpsolver_api.md</code> for the full API specification. A minimal FastAPI server:</p>
+<pre><code class="language-python">from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Dict, Optional
+
+app = FastAPI()
+
+class SimulationRequest(BaseModel):
+    start: float
+    stop: float
+    step: float
+    state_values: Optional[Dict[str, float]] = None
+    parameter_values: Optional[Dict[str, float]] = None
+
+@app.get(&quot;/states&quot;)
+async def get_states():
+    return {&quot;S1&quot;: 100.0, &quot;S1a&quot;: 0.0}
+
+@app.get(&quot;/parameters&quot;)
+async def get_parameters():
+    return {&quot;Vmax_J0&quot;: 100.0, &quot;Km_J0&quot;: 50.0}
+
+@app.post(&quot;/simulate&quot;)
+async def simulate(req: SimulationRequest):
+    # Run simulation with requested parameters
+    return {&quot;time&quot;: [req.start, req.stop], &quot;S1&quot;: [100.0, 90.0], &quot;S1a&quot;: [0.0, 10.0]}
+</code></pre>
+<h2 id="solver-selection-guide">Solver Selection Guide</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommended Solver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default dataset generation</td>
+<td>ScipySolver (<code>solver_type='scipy'</code>)</td>
+</tr>
+<tr>
+<td>Batch simulations (1000+ samples)</td>
+<td>ScipySolver with <code>jit=True</code></td>
+</tr>
+<tr>
+<td>Complex SBML models</td>
+<td>RoadrunnerSolver</td>
+</tr>
+<tr>
+<td>Need robust single simulations</td>
+<td>RoadrunnerSolver</td>
+</tr>
+<tr>
+<td>Remote/distributed computing</td>
+<td>HTTPSolver</td>
+</tr>
+<tr>
+<td>Parameter estimation loops</td>
+<td>ScipySolver with <code>jit=False</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
