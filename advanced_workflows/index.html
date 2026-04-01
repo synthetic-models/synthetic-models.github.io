@@ -62,6 +62,8 @@
   
     
     
+      
+    
     
     
     
@@ -118,7 +120,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -201,6 +229,33 @@
     
   
     Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
   
 
     
@@ -962,284 +1017,284 @@
 <p>In hierarchical signaling networks, signal propagation depends on the balance between forward (activation) and backward (deactivation) reaction rates. The tuner solves the full nonlinear kinetic equations to find parameters where each species reaches a target active percentage.</p>
 <h3 id="usage-via-virtualcell">Usage via VirtualCell</h3>
 <p>Tuning is enabled by default when compiling:</p>
-<pre><code class="language-python">from synthetic import Builder
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 
-vc = Builder.specify(degree_cascades=[3, 6, 15], random_seed=42)
-# Kinetic tuning is applied automatically during compile()
-</code></pre>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># Kinetic tuning is applied automatically during compile()</span>
+</code></pre></div>
 <p>Customize tuning parameters:</p>
-<pre><code class="language-python">vc = Builder.specify(
-    degree_cascades=[3, 6, 15],
-    random_seed=42,
-    auto_compile=False,
-)
+<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span>
+    <span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">auto_compile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 
-vc.compile(
-    use_kinetic_tuner=True,
-    active_percentage_range=(0.3, 0.7),  # Target 30-70% active states
-    X_total_multiplier=5.0,               # Km_b = X_total * 5.0
-    ki_val=100.0,                         # Constant Ki for all inhibitors
-    v_max_f_random_range=(5.0, 10.0),     # Forward Vmax range
-)
-</code></pre>
+<span class="n">vc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">use_kinetic_tuner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">active_percentage_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>  <span class="c1"># Target 30-70% active states</span>
+    <span class="n">X_total_multiplier</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>               <span class="c1"># Km_b = X_total * 5.0</span>
+    <span class="n">ki_val</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>                         <span class="c1"># Constant Ki for all inhibitors</span>
+    <span class="n">v_max_f_random_range</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>     <span class="c1"># Forward Vmax range</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="accessing-tuning-results">Accessing Tuning Results</h3>
-<pre><code class="language-python"># Target concentrations the tuner aimed for
-targets = vc.get_target_concentrations()
-for species, concentration in targets.items():
-    print(f&quot;{species}: {concentration:.3f}&quot;)
+<div class="highlight"><pre><span></span><code><span class="c1"># Target concentrations the tuner aimed for</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">species</span><span class="p">,</span> <span class="n">concentration</span> <span class="ow">in</span> <span class="n">targets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">species</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Regulator-parameter mappings
-regulator_map = vc.model.get_regulator_parameter_map()
-for regulator, params in regulator_map.items():
-    print(f&quot;Regulator {regulator} affects: {list(params.keys())}&quot;)
-</code></pre>
+<span class="c1"># Regulator-parameter mappings</span>
+<span class="n">regulator_map</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_regulator_parameter_map</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">regulator</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">regulator_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regulator </span><span class="si">{</span><span class="n">regulator</span><span class="si">}</span><span class="s2"> affects: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="direct-usage">Direct Usage</h3>
 <p>Use <code>KineticParameterTuner</code> without the high-level API:</p>
-<pre><code class="language-python">from synthetic.Specs.DegreeInteractionSpec import DegreeInteractionSpec
-from synthetic.Specs.Drug import Drug
-from synthetic.utils.kinetic_tuner import KineticParameterTuner
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.DegreeInteractionSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegreeInteractionSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Drug</span><span class="w"> </span><span class="kn">import</span> <span class="n">Drug</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.utils.kinetic_tuner</span><span class="w"> </span><span class="kn">import</span> <span class="n">KineticParameterTuner</span>
 
-# Create specification
-spec = DegreeInteractionSpec(degree_cascades=[3, 6, 15])
-spec.generate_specifications(random_seed=42, feedback_density=0.5)
+<span class="c1"># Create specification</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">DegreeInteractionSpec</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">generate_specifications</span><span class="p">(</span><span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">feedback_density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-# Add drug
-drug = Drug(
-    name=&quot;D&quot;,
-    start_time=5000.0,
-    default_value=0.0,
-    regulation=[&quot;R1_1&quot;, &quot;R1_2&quot;, &quot;R1_3&quot;],
-    regulation_type=[&quot;down&quot;, &quot;down&quot;, &quot;down&quot;],
-)
-spec.add_drug(drug, value=100.0)
+<span class="c1"># Add drug</span>
+<span class="n">drug</span> <span class="o">=</span> <span class="n">Drug</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span>
+    <span class="n">default_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">regulation</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1_1&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_2&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_3&quot;</span><span class="p">],</span>
+    <span class="n">regulation_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">add_drug</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
 
-# Generate and precompile model
-model = spec.generate_network(&quot;MyNetwork&quot;, random_seed=42)
-model.precompile()
+<span class="c1"># Generate and precompile model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">generate_network</span><span class="p">(</span><span class="s2">&quot;MyNetwork&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
 
-# Tune parameters
-tuner = KineticParameterTuner(model, random_seed=42)
-updated_params = tuner.generate_parameters(
-    active_percentage_range=(0.3, 0.7),
-    X_total_multiplier=5.0,
-    ki_val=100.0,
-    v_max_f_random_range=(5.0, 10.0),
-)
+<span class="c1"># Tune parameters</span>
+<span class="n">tuner</span> <span class="o">=</span> <span class="n">KineticParameterTuner</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">updated_params</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">generate_parameters</span><span class="p">(</span>
+    <span class="n">active_percentage_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+    <span class="n">X_total_multiplier</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">ki_val</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>
+    <span class="n">v_max_f_random_range</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="p">)</span>
 
-# Apply tuned parameters
-for param_name, value in updated_params.items():
-    model.set_parameter(param_name, value)
+<span class="c1"># Apply tuned parameters</span>
+<span class="k">for</span> <span class="n">param_name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">updated_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-# Get target concentrations for validation
-target_concentrations = tuner.get_target_concentrations()
-</code></pre>
+<span class="c1"># Get target concentrations for validation</span>
+<span class="n">target_concentrations</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="parameter-estimation">Parameter Estimation</h2>
 <p>Synthetic models can serve as ground truth for testing parameter estimation methods. Since you know the true parameters, you can validate calibration algorithms. Typically, in real experiments, you have sparse timecourse data for a few species, so we will mimic that scenario.</p>
 <h3 id="setup-ground-truth-sparse-observations">Setup: Ground Truth + Sparse Observations</h3>
-<pre><code class="language-python">import numpy as np
-from synthetic import Builder
-from synthetic.Solver.ScipySolver import ScipySolver
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
 
-# Build a small model with known parameters
-vc = Builder.specify(degree_cascades=[1, 2], random_seed=42)
+<span class="c1"># Build a small model with known parameters</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-# Simulate dense ground truth
-antimony = vc.model.get_antimony_model()
-solver = ScipySolver()
-solver.compile(antimony, jit=False)
-timecourse_full = solver.simulate(start=0, stop=10000, step=201)
+<span class="c1"># Simulate dense ground truth</span>
+<span class="n">antimony</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">timecourse_full</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
 
-# Store ground truth
-true_params = vc.model.get_parameters()
-true_initial = vc.model.get_state_variables()
+<span class="c1"># Store ground truth</span>
+<span class="n">true_params</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+<span class="n">true_initial</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">()</span>
 
-# Downsample to sparse observations (mimicking real experiments)
-DRUG_TIME = 5000.0
-sparse_times = np.array([5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000])
-sparse_indices = [np.argmin(np.abs(timecourse_full['time'].values - t)) for t in sparse_times]
-timecourse_sparse = timecourse_full.iloc[sparse_indices].reset_index(drop=True)
-</code></pre>
+<span class="c1"># Downsample to sparse observations (mimicking real experiments)</span>
+<span class="n">DRUG_TIME</span> <span class="o">=</span> <span class="mf">5000.0</span>
+<span class="n">sparse_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5500</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">6500</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">9000</span><span class="p">,</span> <span class="mi">9500</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+<span class="n">sparse_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">timecourse_full</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sparse_times</span><span class="p">]</span>
+<span class="n">timecourse_sparse</span> <span class="o">=</span> <span class="n">timecourse_full</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sparse_indices</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="parameter-selection">Parameter Selection</h3>
 <p>Select identifiable parameters for estimation (typically <code>Km</code> and <code>Vmax</code> values):</p>
-<pre><code class="language-python">param_names = [p for p in true_params.keys() if p.startswith('Km_') or p.startswith('Vmax_')][:12]
-true_values = np.array([true_params[p] for p in param_names])
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">true_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Km_&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Vmax_&#39;</span><span class="p">)][:</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">true_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">true_params</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">param_names</span><span class="p">])</span>
+</code></pre></div>
 <h3 id="objective-function">Objective Function</h3>
 <p>Define an objective that simulates with trial parameters and computes MSE against sparse observations:</p>
-<pre><code class="language-python">species_to_fit = [s for s in timecourse_sparse.columns if s != 'time']
+<div class="highlight"><pre><span></span><code><span class="n">species_to_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">timecourse_sparse</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
 
-def objective(log_params):
-    trial_params = dict(zip(param_names, np.exp(log_params)))
-    solver.set_state_values(true_initial)
-    solver.set_parameter_values(trial_params)
+<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">log_params</span><span class="p">):</span>
+    <span class="n">trial_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_names</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_params</span><span class="p">)))</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">set_state_values</span><span class="p">(</span><span class="n">true_initial</span><span class="p">)</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">(</span><span class="n">trial_params</span><span class="p">)</span>
 
-    try:
-        tc = solver.simulate(start=0, stop=10000, step=201)
-    except Exception:
-        return 1e10  # Penalty for failed simulation
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1e10</span>  <span class="c1"># Penalty for failed simulation</span>
 
-    sim_indices = [np.argmin(np.abs(tc['time'].values - t)) for t in sparse_times]
-    residuals = []
-    for sp in species_to_fit:
-        sim_vals = tc[sp].values[sim_indices]
-        obs_vals = timecourse_sparse[sp].values
-        residuals.append((sim_vals - obs_vals) ** 2)
+    <span class="n">sim_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sparse_times</span><span class="p">]</span>
+    <span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">species_to_fit</span><span class="p">:</span>
+        <span class="n">sim_vals</span> <span class="o">=</span> <span class="n">tc</span><span class="p">[</span><span class="n">sp</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sim_indices</span><span class="p">]</span>
+        <span class="n">obs_vals</span> <span class="o">=</span> <span class="n">timecourse_sparse</span><span class="p">[</span><span class="n">sp</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">sim_vals</span> <span class="o">-</span> <span class="n">obs_vals</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
-    return np.mean(residuals)
-</code></pre>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="optimization">Optimization</h3>
 <p>Run optimization in log-space to enforce positivity:</p>
-<pre><code class="language-python">from scipy.optimize import minimize
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
 
-# Perturbed initial guess
-initial_values = true_values * np.random.uniform(0.3, 3.0, size=len(param_names))
-log_initial_guess = np.log(initial_values)
-log_bounds = [(np.log(0.01 * tv), np.log(100.0 * tv)) for tv in true_values]
+<span class="c1"># Perturbed initial guess</span>
+<span class="n">initial_values</span> <span class="o">=</span> <span class="n">true_values</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">param_names</span><span class="p">))</span>
+<span class="n">log_initial_guess</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">initial_values</span><span class="p">)</span>
+<span class="n">log_bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.01</span> <span class="o">*</span> <span class="n">tv</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">tv</span><span class="p">))</span> <span class="k">for</span> <span class="n">tv</span> <span class="ow">in</span> <span class="n">true_values</span><span class="p">]</span>
 
-result = minimize(
-    objective,
-    log_initial_guess,
-    method='L-BFGS-B',
-    bounds=log_bounds,
-    options={'maxiter': 200, 'ftol': 1e-12},
-)
+<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span>
+    <span class="n">objective</span><span class="p">,</span>
+    <span class="n">log_initial_guess</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="o">=</span><span class="n">log_bounds</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;ftol&#39;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">},</span>
+<span class="p">)</span>
 
-estimated_values = np.exp(result.x)
-</code></pre>
+<span class="n">estimated_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="evaluating-results">Evaluating Results</h3>
 <p>Compare estimated parameters to ground truth:</p>
 <p><img alt="Ground truth vs sparse observations" src="../images/param_estimation_observations.png" /></p>
-<pre><code class="language-python">for i, p in enumerate(param_names):
-    err = abs(estimated_values[i] - true_values[i]) / true_values[i] * 100
-    print(f&quot;{p:&lt;15} True: {true_values[i]:.3f}  Estimated: {estimated_values[i]:.3f}  Error: {err:.1f}%&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_names</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">estimated_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">true_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">true_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> True: </span><span class="si">{</span><span class="n">true_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  Estimated: </span><span class="si">{</span><span class="n">estimated_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  Error: </span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>Simulate with estimated parameters to visualize the fit:</p>
 <p><img alt="Parameter estimation results: true vs initial guess vs estimated" src="../images/param_estimation_results.png" /></p>
 <p><img alt="Fitted timecourse compared to ground truth" src="../images/param_estimation_fitted.png" /></p>
-<pre><code class="language-python">solver.set_state_values(true_initial)
-solver.set_parameter_values(dict(zip(param_names, estimated_values)))
-timecourse_fitted = solver.simulate(start=0, stop=10000, step=201)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">solver</span><span class="o">.</span><span class="n">set_state_values</span><span class="p">(</span><span class="n">true_initial</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_names</span><span class="p">,</span> <span class="n">estimated_values</span><span class="p">)))</span>
+<span class="n">timecourse_fitted</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="model-export-interoperability">Model Export &amp; Interoperability</h2>
 <p>Export Synthetic models to standard formats for use in other tools.</p>
 <h3 id="sbml-export">SBML Export</h3>
 <p>SBML (Systems Biology Markup Language) is the standard for sharing biochemical models:</p>
-<pre><code class="language-python">from synthetic import Builder
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 
-vc = Builder.specify(degree_cascades=[2, 5, 10], random_seed=42)
-model = vc.model
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span>
 
-# Save to file
-model.save_sbml_model_as('synthetic_model.sbml')
+<span class="c1"># Save to file</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_sbml_model_as</span><span class="p">(</span><span class="s1">&#39;synthetic_model.sbml&#39;</span><span class="p">)</span>
 
-# Get as string
-sbml_string = model.get_sbml_model()
-</code></pre>
+<span class="c1"># Get as string</span>
+<span class="n">sbml_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span>
+</code></pre></div>
 <p>SBML files can be imported into COPASI, libRoadRunner, and other SBML-compliant tools.</p>
 <h3 id="antimony-export">Antimony Export</h3>
 <p>Antimony is a human-readable format for model inspection and modification:</p>
-<pre><code class="language-python"># Save to file
-model.save_antimony_model_as('synthetic_model.ant')
+<div class="highlight"><pre><span></span><code><span class="c1"># Save to file</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_antimony_model_as</span><span class="p">(</span><span class="s1">&#39;synthetic_model.ant&#39;</span><span class="p">)</span>
 
-# Get as string
-antimony_string = model.get_antimony_model()
-</code></pre>
+<span class="c1"># Get as string</span>
+<span class="n">antimony_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="model-inspection">Model Inspection</h3>
-<pre><code class="language-python"># Model overview
-print(model.head())
+<div class="highlight"><pre><span></span><code><span class="c1"># Model overview</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
-# Statistics
-print(f&quot;Species: {len(model.get_state_variables())}&quot;)
-print(f&quot;Parameters: {len(model.get_parameters())}&quot;)
-print(f&quot;Reactions: {len(model.reactions)}&quot;)
-</code></pre>
+<span class="c1"># Statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Species: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reactions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">reactions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="ml-benchmarking">ML Benchmarking</h2>
 <p>Synthetic datasets are designed for benchmarking machine learning models with known ground truth.</p>
 <h3 id="traintest-with-sklearn">Train/Test with sklearn</h3>
 <p><img alt="ML model comparison by Pearson correlation" src="../images/ml_model_comparison.png" /></p>
-<pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
-X, y = make_dataset_drug_response(n=1000, cell_model=vc, target_specie='Oa')
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">)</span>
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-model = RandomForestRegressor(random_state=42)
-model.fit(X_train, y_train)
-score = model.score(X_test, y_test)
-print(f&quot;R^2 score: {score:.3f}&quot;)
-</code></pre>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R^2 score: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="comparing-feature-types">Comparing Feature Types</h3>
 <p>Compare predictive power of different feature representations:</p>
-<pre><code class="language-python">from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import cross_val_score
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
 
-# Initial values as features (default X)
-r2_initial = cross_val_score(LinearRegression(), X, y, cv=5, scoring='r2').mean()
+<span class="c1"># Initial values as features (default X)</span>
+<span class="n">r2_initial</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">(),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-# Kinetic parameters as features
-r2_params = cross_val_score(LinearRegression(), parameters, y, cv=5, scoring='r2').mean()
+<span class="c1"># Kinetic parameters as features</span>
+<span class="n">r2_params</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">(),</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-# Timecourse last-point features (activated species only)
-X_tc = X_timecourse[[c for c in X_timecourse.columns if c.endswith('a') and c != 'Oa']]
-r2_tc = cross_val_score(LinearRegression(), X_tc, y, cv=5, scoring='r2').mean()
+<span class="c1"># Timecourse last-point features (activated species only)</span>
+<span class="n">X_tc</span> <span class="o">=</span> <span class="n">X_timecourse</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X_timecourse</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;Oa&#39;</span><span class="p">]]</span>
+<span class="n">r2_tc</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">(),</span> <span class="n">X_tc</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-print(f&quot;Initial values R^2: {r2_initial:.3f}&quot;)
-print(f&quot;Kinetic params R^2: {r2_params:.3f}&quot;)
-print(f&quot;Timecourse R^2: {r2_tc:.3f}&quot;)
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initial values R^2: </span><span class="si">{</span><span class="n">r2_initial</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kinetic params R^2: </span><span class="si">{</span><span class="n">r2_params</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timecourse R^2: </span><span class="si">{</span><span class="n">r2_tc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="low-level-api-access">Low-Level API Access</h2>
 <p>For maximum control, bypass the high-level <code>Builder</code>/<code>VirtualCell</code> API and use the underlying components directly.</p>
 <h3 id="direct-spec-usage">Direct Spec Usage</h3>
-<pre><code class="language-python">from synthetic.Specs.DegreeInteractionSpec import DegreeInteractionSpec
-from synthetic.Specs.Drug import Drug
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.DegreeInteractionSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegreeInteractionSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Drug</span><span class="w"> </span><span class="kn">import</span> <span class="n">Drug</span>
 
-# Create specification
-spec = DegreeInteractionSpec(degree_cascades=[1, 2, 5])
-spec.generate_specifications(random_seed=42, feedback_density=0.5)
+<span class="c1"># Create specification</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">DegreeInteractionSpec</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">generate_specifications</span><span class="p">(</span><span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">feedback_density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-# Add drug manually
-drug = Drug(
-    name=&quot;D&quot;,
-    start_time=5000.0,
-    default_value=0.0,
-    regulation=[&quot;R1_1&quot;, &quot;R1_2&quot;, &quot;R1_3&quot;],
-    regulation_type=[&quot;down&quot;, &quot;down&quot;, &quot;down&quot;],
-)
-spec.add_drug(drug, value=100.0)
-</code></pre>
+<span class="c1"># Add drug manually</span>
+<span class="n">drug</span> <span class="o">=</span> <span class="n">Drug</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span>
+    <span class="n">default_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">regulation</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1_1&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_2&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_3&quot;</span><span class="p">],</span>
+    <span class="n">regulation_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">add_drug</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="direct-model-building">Direct Model Building</h3>
-<pre><code class="language-python"># Generate network from specification
-model = spec.generate_network(
-    network_name=&quot;MyNetwork&quot;,
-    mean_range_species=(50, 150),
-    rangeScale_params=(0.8, 1.2),
-    random_seed=42,
-)
-model.precompile()
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate network from specification</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">generate_network</span><span class="p">(</span>
+    <span class="n">network_name</span><span class="o">=</span><span class="s2">&quot;MyNetwork&quot;</span><span class="p">,</span>
+    <span class="n">mean_range_species</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
+    <span class="n">rangeScale_params</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">),</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
 
-# Inspect and modify
-print(model.get_state_variables())
-print(model.get_parameters())
+<span class="c1"># Inspect and modify</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">())</span>
 
-# Set specific values
-model.set_parameter('Km_J0', 100.0)
-model.set_state('R1_1', 80.0)
-</code></pre>
+<span class="c1"># Set specific values</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="s1">&#39;Km_J0&#39;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;R1_1&#39;</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="direct-solver-usage">Direct Solver Usage</h3>
-<pre><code class="language-python">from synthetic.Solver.ScipySolver import ScipySolver
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
 
-# Get model string and simulate
-antimony = model.get_antimony_model()
-solver = ScipySolver()
-solver.compile(antimony, jit=True)
+<span class="c1"># Get model string and simulate</span>
+<span class="n">antimony</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# Override states and parameters
-solver.set_state_values({'R1_1': 100.0})
-solver.set_parameter_values({'Km_J0': 50.0})
+<span class="c1"># Override states and parameters</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_state_values</span><span class="p">({</span><span class="s1">&#39;R1_1&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">})</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">({</span><span class="s1">&#39;Km_J0&#39;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">})</span>
 
-results = solver.simulate(start=0, stop=10000, step=100)
-</code></pre>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
 
 
 
@@ -1263,6 +1318,30 @@ results = solver.simulate(start=0, stop=10000, step=100)
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../data_generation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Generation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Data Generation
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1289,10 +1368,14 @@ results = solver.simulate(start=0, stop=10000, step=100)
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-config.js"></script>
       
     
   </body>

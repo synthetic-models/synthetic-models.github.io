@@ -64,6 +64,8 @@
   
     
     
+      
+    
     
     
     
@@ -120,7 +122,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -203,6 +231,33 @@
     
   
     Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
   
 
     
@@ -748,147 +803,147 @@
 </table>
 <h2 id="using-the-built-in-solver">Using the Built-in Solver</h2>
 <p><code>make_dataset_drug_response</code> handles solver creation internally. Choose the backend with <code>solver_type</code>:</p>
-<pre><code class="language-python">from synthetic import Builder, make_dataset_drug_response
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">make_dataset_drug_response</span>
 
-vc = Builder.specify(degree_cascades=[1, 2, 5], random_seed=42)
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-# Default: ScipySolver (fast, with JIT)
-X, y = make_dataset_drug_response(n=100, cell_model=vc, solver_type='scipy', jit=True)
+<span class="c1"># Default: ScipySolver (fast, with JIT)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# Alternative: RoadrunnerSolver
-X, y = make_dataset_drug_response(n=100, cell_model=vc, solver_type='roadrunner')
-</code></pre>
+<span class="c1"># Alternative: RoadrunnerSolver</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;roadrunner&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="direct-solver-usage">Direct Solver Usage</h2>
 <p>For custom simulation workflows, use solvers directly.</p>
 <h3 id="scipysolver">ScipySolver</h3>
 <p>Uses <code>scipy.integrate.odeint</code> with optional JIT compilation:</p>
-<pre><code class="language-python">from synthetic import Builder
-from synthetic.Solver.ScipySolver import ScipySolver
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
 
-vc = Builder.specify(degree_cascades=[2, 3, 4], random_seed=42)
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-# Get Antimony model string
-antimony = vc.model.get_antimony_model()
+<span class="c1"># Get Antimony model string</span>
+<span class="n">antimony</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
 
-# Compile and simulate
-solver = ScipySolver()
-solver.compile(antimony, jit=True)  # Enable JIT for faster execution
-results = solver.simulate(start=0, stop=10000, step=50)
+<span class="c1"># Compile and simulate</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Enable JIT for faster execution</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-print(results.head())
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
 <h3 id="roadrunnersolver">RoadrunnerSolver</h3>
 <p>Uses libRoadRunner for SBML simulation. Requires SBML format (not Antimony):</p>
-<pre><code class="language-python">from synthetic.Solver.RoadrunnerSolver import RoadrunnerSolver
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.RoadrunnerSolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoadrunnerSolver</span>
 
-# Get SBML model string
-sbml = vc.model.get_sbml_model()
+<span class="c1"># Get SBML model string</span>
+<span class="n">sbml</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span>
 
-solver = RoadrunnerSolver()
-solver.compile(sbml)
-results = solver.simulate(start=0, stop=10000, step=50)
-</code></pre>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">RoadrunnerSolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">sbml</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="simulation-output">Simulation Output</h3>
 <p>Both solvers return a pandas DataFrame with a <code>time</code> column and one column per species:</p>
-<pre><code>       time    R1_1   R1_1a    I1_1   I1_1a      O      Oa
+<div class="highlight"><pre><span></span><code>       time    R1_1   R1_1a    I1_1   I1_1a      O      Oa
 0       0.0  100.00    0.00  100.00    0.00  100.0    0.0
 1      50.0   95.23    4.77   98.10    1.90   99.5    0.5
 2     100.0   91.50    8.50   96.40    3.60   98.8    1.2
 ...
-</code></pre>
+</code></pre></div>
 <h2 id="timecourse-simulation">Timecourse Simulation</h2>
 <p>Simulate and visualize species dynamics over time. The vertical dashed line marks drug onset:</p>
 <p><img alt="Timecourse simulation with ScipySolver" src="../images/timecourse_scipy.png" /></p>
-<pre><code class="language-python">from synthetic import Builder
-from synthetic.Solver.ScipySolver import ScipySolver
-import matplotlib.pyplot as plt
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-vc = Builder.specify(degree_cascades=[2, 3, 4], random_seed=42)
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-antimony = vc.model.get_antimony_model()
-solver = ScipySolver()
-solver.compile(antimony, jit=False)
-timecourse = solver.simulate(start=0, stop=10000, step=50)
+<span class="n">antimony</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">timecourse</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-# Plot outcome dynamics
-fig, ax = plt.subplots()
-ax.plot(timecourse['time'], timecourse['O'], label='O (inactive)')
-ax.plot(timecourse['time'], timecourse['Oa'], label='Oa (active)')
-ax.axvline(x=5000, color='gray', linestyle='--', label='Drug onset')
-ax.set_xlabel('Time')
-ax.set_ylabel('Concentration')
-ax.legend()
-plt.show()
-</code></pre>
+<span class="c1"># Plot outcome dynamics</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timecourse</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">timecourse</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;O (inactive)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timecourse</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">timecourse</span><span class="p">[</span><span class="s1">&#39;Oa&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Oa (active)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drug onset&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="comparing-solvers">Comparing Solvers</h3>
 <p>Run the same simulation with both solvers to compare results. Both produce identical dynamics:</p>
 <p><img alt="Timecourse simulation with RoadrunnerSolver" src="../images/timecourse_roadrunner.png" /></p>
-<pre><code class="language-python">from synthetic.Solver.ScipySolver import ScipySolver
-from synthetic.Solver.RoadrunnerSolver import RoadrunnerSolver
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.RoadrunnerSolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoadrunnerSolver</span>
 
-# ScipySolver
-solver_scipy = ScipySolver()
-solver_scipy.compile(vc.model.get_antimony_model(), jit=False)
-tc_scipy = solver_scipy.simulate(start=0, stop=10000, step=50)
+<span class="c1"># ScipySolver</span>
+<span class="n">solver_scipy</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver_scipy</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">(),</span> <span class="n">jit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tc_scipy</span> <span class="o">=</span> <span class="n">solver_scipy</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-# RoadrunnerSolver
-solver_rr = RoadrunnerSolver()
-solver_rr.compile(vc.model.get_sbml_model())
-tc_rr = solver_rr.simulate(start=0, stop=10000, step=50)
+<span class="c1"># RoadrunnerSolver</span>
+<span class="n">solver_rr</span> <span class="o">=</span> <span class="n">RoadrunnerSolver</span><span class="p">()</span>
+<span class="n">solver_rr</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">())</span>
+<span class="n">tc_rr</span> <span class="o">=</span> <span class="n">solver_rr</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-# Compare outcome at final timepoint
-print(f&quot;ScipySolver Oa: {tc_scipy['Oa'].iloc[-1]:.4f}&quot;)
-print(f&quot;RoadrunnerSolver Oa: {tc_rr['Oa'].iloc[-1]:.4f}&quot;)
-</code></pre>
+<span class="c1"># Compare outcome at final timepoint</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ScipySolver Oa: </span><span class="si">{</span><span class="n">tc_scipy</span><span class="p">[</span><span class="s1">&#39;Oa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RoadrunnerSolver Oa: </span><span class="si">{</span><span class="n">tc_rr</span><span class="p">[</span><span class="s1">&#39;Oa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="http-solver-for-remote-simulation">HTTP Solver for Remote Simulation</h2>
 <p>The <code>HTTPSolver</code> sends simulation requests to a remote server via HTTP. This is useful for distributed computing or when the simulation engine runs on a separate machine.</p>
 <h3 id="client-usage">Client Usage</h3>
-<pre><code class="language-python">from synthetic.Solver.HTTPSolver import HTTPSolver
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.HTTPSolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPSolver</span>
 
-solver = HTTPSolver()
+<span class="n">solver</span> <span class="o">=</span> <span class="n">HTTPSolver</span><span class="p">()</span>
 
-# Connect and validate endpoint
-solver.compile(&quot;http://localhost:8000/simulate&quot;)
+<span class="c1"># Connect and validate endpoint</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;http://localhost:8000/simulate&quot;</span><span class="p">)</span>
 
-# Get default states and parameters
-states = solver.get_state_defaults()
-params = solver.get_parameter_defaults()
+<span class="c1"># Get default states and parameters</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">get_state_defaults</span><span class="p">()</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">get_parameter_defaults</span><span class="p">()</span>
 
-# Override values
-solver.set_state_values({&quot;R1_1&quot;: 1000.0})
-solver.set_parameter_values({&quot;Km_J0&quot;: 10.0})
+<span class="c1"># Override values</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_state_values</span><span class="p">({</span><span class="s2">&quot;R1_1&quot;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">})</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">({</span><span class="s2">&quot;Km_J0&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">})</span>
 
-# Run simulation
-results = solver.simulate(start=0, stop=60, step=0.5)
-</code></pre>
+<span class="c1"># Run simulation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="server-setup">Server Setup</h3>
 <p>The HTTP solver requires a server implementing the simulation API. See <code>examples/httpsolver_api.md</code> for the full API specification. A minimal FastAPI server:</p>
-<pre><code class="language-python">from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import Dict, Optional
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-app = FastAPI()
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
-class SimulationRequest(BaseModel):
-    start: float
-    stop: float
-    step: float
-    state_values: Optional[Dict[str, float]] = None
-    parameter_values: Optional[Dict[str, float]] = None
+<span class="k">class</span><span class="w"> </span><span class="nc">SimulationRequest</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">start</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">stop</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">step</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">state_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">parameter_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
-@app.get(&quot;/states&quot;)
-async def get_states():
-    return {&quot;S1&quot;: 100.0, &quot;S1a&quot;: 0.0}
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/states&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_states</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;S1&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s2">&quot;S1a&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
 
-@app.get(&quot;/parameters&quot;)
-async def get_parameters():
-    return {&quot;Vmax_J0&quot;: 100.0, &quot;Km_J0&quot;: 50.0}
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/parameters&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_parameters</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Vmax_J0&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s2">&quot;Km_J0&quot;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">}</span>
 
-@app.post(&quot;/simulate&quot;)
-async def simulate(req: SimulationRequest):
-    # Run simulation with requested parameters
-    return {&quot;time&quot;: [req.start, req.stop], &quot;S1&quot;: [100.0, 90.0], &quot;S1a&quot;: [0.0, 10.0]}
-</code></pre>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/simulate&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">SimulationRequest</span><span class="p">):</span>
+    <span class="c1"># Run simulation with requested parameters</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">req</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">stop</span><span class="p">],</span> <span class="s2">&quot;S1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">90.0</span><span class="p">],</span> <span class="s2">&quot;S1a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]}</span>
+</code></pre></div>
 <h2 id="solver-selection-guide">Solver Selection Guide</h2>
 <table>
 <thead>
@@ -948,6 +1003,46 @@ async def simulate(req: SimulationRequest):
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../network_and_drug_design/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Network &amp; Drug Design">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Network & Drug Design
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../data_generation/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Generation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Data Generation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -973,10 +1068,14 @@ async def simulate(req: SimulationRequest):
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-config.js"></script>
       
     
   </body>

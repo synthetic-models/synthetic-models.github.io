@@ -1,0 +1,1531 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://synthetic-models.github.io/model_building/">
+      
+      
+        <link rel="prev" href="../quick_start/">
+      
+      
+        <link rel="next" href="../network_and_drug_design/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Model Building - Synthetic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-building" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Synthetic" class="md-header__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Synthetic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model Building
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Synthetic" class="md-nav__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Synthetic
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-reactionarchtype-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1: ReactionArchtype — The Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-reaction-the-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2: Reaction — The Instance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 2: Reaction — The Instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-regulation-extra-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Regulation (Extra States)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-modelbuilder-the-aggregator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3: ModelBuilder — The Aggregator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predefined-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predefined Archtypes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predefined Archtypes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple Archtypes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-factory-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Factory Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Archtypes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-mapk-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: MAPK Cascade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-regulated-pathway-with-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Regulated Pathway with Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-time-dependent-drug-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Time-Dependent Drug Perturbation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-combining-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Combining Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-and-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export and Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reactionarchtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReactionArchtype
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelbuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModelBuilder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_and_drug_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network & Drug Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solvers_and_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-reactionarchtype-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1: ReactionArchtype — The Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-reaction-the-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2: Reaction — The Instance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 2: Reaction — The Instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-regulation-extra-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Regulation (Extra States)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-modelbuilder-the-aggregator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3: ModelBuilder — The Aggregator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predefined-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predefined Archtypes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predefined Archtypes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple Archtypes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-factory-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Factory Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-archtypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Archtypes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-mapk-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: MAPK Cascade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-regulated-pathway-with-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Regulated Pathway with Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-time-dependent-drug-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Time-Dependent Drug Perturbation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-combining-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Combining Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-and-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export and Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reactionarchtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReactionArchtype
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelbuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModelBuilder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="model-building">Model Building</h1>
+<p>The <a href="../quick_start/">Quick Start</a> guide covers the high-level <code>Builder</code> API for generating models from degree cascades. This page describes the underlying architecture, which is far more flexible — you can build arbitrary biochemical networks by composing reactions directly.</p>
+<h2 id="the-three-layers">The Three Layers</h2>
+<p>Every model in Synthetic is built from three composable layers:</p>
+<pre class="mermaid"><code>graph LR
+    A["ReactionArchtype&lt;br/&gt;Rate law template"] --&gt; R["Reaction&lt;br/&gt;Instantiation with&lt;br/&gt;species &amp; values"]
+    R --&gt; M["ModelBuilder&lt;br/&gt;Aggregation &amp;&lt;br/&gt;compilation"]
+    M --&gt; E["Export&lt;br/&gt;Antimony / SBML"]
+
+    style A fill:#3f51b544,stroke:#3f51b5
+    style R fill:#3f51b544,stroke:#3f51b5
+    style M fill:#3f51b544,stroke:#3f51b5
+    style E fill:#4caf5044,stroke:#4caf50</code></pre>
+<h3 id="layer-1-reactionarchtype-the-template">Layer 1: ReactionArchtype — The Template</h3>
+<p>An archtype defines a reaction's <em>structure</em>: what placeholder species it expects, what parameters it needs, and the rate law equation. Think of it as a function signature.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactionArchtype</span>
+
+<span class="n">hill_archtype</span> <span class="o">=</span> <span class="n">ReactionArchtype</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Hill Kinetics&#39;</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">,),</span>          <span class="c1"># &amp; prefix = placeholder reactant</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">,),</span>           <span class="c1"># &amp; prefix = placeholder product</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Vmax&#39;</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">),</span>
+    <span class="n">rate_law</span><span class="o">=</span><span class="s1">&#39;Vmax * &amp;S^n / (Km^n + &amp;S^n)&#39;</span><span class="p">,</span>
+    <span class="n">assume_parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="n">assume_reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">assume_product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Naming conventions for placeholders:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>Forward reactant/product or regulator</td>
+<td><code>&amp;S</code>, <code>&amp;A0</code>, <code>&amp;I0</code></td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Reverse-only regulator (used in reversible reactions)</td>
+<td><code>?A0</code>, <code>?I0</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rate_law</code></td>
+<td>Mathematical expression using placeholder names and parameter names</td>
+</tr>
+<tr>
+<td><code>extra_states</code></td>
+<td>Placeholder names for regulators (species in the rate law but not reactants/products)</td>
+</tr>
+<tr>
+<td><code>reversible</code></td>
+<td>If <code>True</code>, a <code>reverse_rate_law</code> is also required</td>
+</tr>
+<tr>
+<td><code>assume_*_values</code></td>
+<td>Default values used when a <code>Reaction</code> doesn't specify its own</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layer-2-reaction-the-instance">Layer 2: Reaction — The Instance</h3>
+<p>A reaction binds an archtype to actual species names and concrete values. The placeholder <code>&amp;S</code> becomes <code>EGFR</code>, <code>&amp;P</code> becomes <code>pEGFR</code>, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Reaction</span>
+
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">hill_archtype</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;EGFR&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pEGFR&#39;</span><span class="p">,),</span>
+    <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;egfr_phosphorylation&#39;</span><span class="p">,</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;EGFR&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pEGFR&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameter values</strong> can be provided as:</p>
+<ul>
+<li>A <strong>dict</strong> (recommended): <code>{'Vmax': 15, 'Km': 60}</code></li>
+<li>A <strong>tuple</strong> (positional, must match archtype order): <code>(15, 60)</code></li>
+</ul>
+<p><strong>Initial concentrations</strong> work the same way for <code>reactant_values</code> and <code>product_values</code>.</p>
+<p>If values are omitted, the archtype's <code>assume_*_values</code> are used. The <code>zero_init</code> parameter (default <code>True</code>) controls whether unspecified concentrations default to 0.</p>
+<h4 id="adding-regulation-extra-states">Adding Regulation (Extra States)</h4>
+<p>Regulators are species that appear in the rate law but don't participate in mass balance. They model allosteric effects, competitive inhibition, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArchtypeCollections</span>
+
+<span class="c1"># Create an archtype with 1 competitive inhibitor</span>
+<span class="n">regulated_mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">create_archtype_michaelis_menten</span><span class="p">(</span>
+    <span class="n">competitive_inhibitors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># The archtype now expects an extra state &amp;I0 and a parameter Kic0</span>
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">regulated_mm</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Sa&#39;</span><span class="p">,),</span>
+    <span class="n">extra_states</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Inhibitor&#39;</span><span class="p">,),</span>      <span class="c1"># maps to archtype&#39;s &amp;I0</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Kic0&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Sa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>The <strong>regulator-parameter mapping</strong> is automatic based on parameter naming conventions:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Prefix</th>
+<th>Regulator Prefix</th>
+<th>Regulation Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ka</code>, <code>Ks</code></td>
+<td><code>&amp;A</code></td>
+<td>Allosteric stimulation</td>
+</tr>
+<tr>
+<td><code>Kw</code></td>
+<td><code>&amp;W</code></td>
+<td>Weak/additive stimulation</td>
+</tr>
+<tr>
+<td><code>Ki</code>, <code>Kil</code></td>
+<td><code>&amp;L</code>, <code>&amp;I</code></td>
+<td>Allosteric inhibition</td>
+</tr>
+<tr>
+<td><code>Kic</code></td>
+<td><code>&amp;I</code></td>
+<td>Competitive inhibition</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layer-3-modelbuilder-the-aggregator">Layer 3: ModelBuilder — The Aggregator</h3>
+<p><code>ModelBuilder</code> collects reactions, manages global state, and generates exportable model code.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;MyPathway&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn2</span><span class="p">)</span>
+
+<span class="c1"># Required before accessing parameters/states or exporting</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="c1"># Inspect and modify</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="s1">&#39;Vmax_J0&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;EGFR&#39;</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="predefined-archtypes">Predefined Archtypes</h2>
+<p><code>ArchtypeCollections</code> provides ready-made archtypes for common biochemical patterns:</p>
+<h3 id="simple-archtypes">Simple Archtypes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Rate Law</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>michaelis_menten</code></td>
+<td>Standard Michaelis-Menten</td>
+<td><code>Vmax*S/(Km + S)</code></td>
+</tr>
+<tr>
+<td><code>simple_rate_law</code></td>
+<td>First-order kinetics</td>
+<td><code>kf*A</code></td>
+</tr>
+<tr>
+<td><code>mass_action_21</code></td>
+<td>Reversible 2-to-1 binding</td>
+<td><code>ka*A*B</code> (fwd), <code>kd*C</code> (rev)</td>
+</tr>
+<tr>
+<td><code>synthesis</code></td>
+<td>Zero-order production</td>
+<td><code>Ksyn</code></td>
+</tr>
+<tr>
+<td><code>degredation</code></td>
+<td>First-order decay</td>
+<td><code>Kdeg*A</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="configurable-factory-functions">Configurable Factory Functions</h3>
+<p>These functions generate archtypes with the number and type of regulators you specify:</p>
+<p><strong><code>create_archtype_michaelis_menten(stimulators, stimulator_weak, allosteric_inhibitors, competitive_inhibitors)</code></strong></p>
+<p>The most commonly used factory. Generates a Michaelis-Menten rate law with <code>Vmax</code>:</p>
+<div class="highlight"><pre><span></span><code>(Vmax + W0*Kw0 + ...) * S * (A0*Ka0 + ...) / ((Km*(1 + I0*Kic0 + ...)) + S) * (1 + L0*Kil0 + ...)
+</code></pre></div>
+<p><strong><code>create_archtype_michaelis_menten_v2(...)</code></strong></p>
+<p>Same regulation options, but uses <code>Kc</code> parameters instead of <code>Vmax</code>. Useful when you want each stimulator's contribution to be an independent parameter.</p>
+<p><strong><code>create_archtype_basal_michaelis(...)</code></strong></p>
+<p>A basal variant that retains <code>Kc</code> even with stimulators, representing constitutive activation plus regulation.</p>
+<p><strong><code>create_archtype_mass_action(reactant_count, product_count, ...)</code></strong></p>
+<p>Fully configurable mass action with forward and reverse regulation:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArchtypeCollections</span>
+
+<span class="n">arch</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">create_archtype_mass_action</span><span class="p">(</span>
+    <span class="n">reactant_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">product_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">allo_stimulators</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>        <span class="c1"># forward stimulator</span>
+    <span class="n">allo_inhibitors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>         <span class="c1"># forward inhibitor</span>
+    <span class="n">rev_allo_inhibitors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c1"># reverse inhibitor</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong><code>create_archtype_synthesis(allo_stimulators, allo_inhibitors)</code></strong></p>
+<p>Synthesis with optional regulation: <code>Ksyn * (A0*Ks0 + ...) * (1/(1 + I0*Ki0 + ...))</code></p>
+<p><strong><code>create_archtype_degredation(allo_stimulators, allo_inhibitors)</code></strong></p>
+<p>Degradation with optional regulation: <code>Kdeg*R * (A0*Ks0 + ...) * (1/(1 + I0*Ki0 + ...))</code></p>
+<h2 id="custom-archtypes">Custom Archtypes</h2>
+<p>You can define entirely new rate laws. The only requirement is that the rate law string references all declared parameters and extra states.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactionArchtype</span>
+
+<span class="c1"># Cooperative binding with Hill coefficient</span>
+<span class="n">cooperative</span> <span class="o">=</span> <span class="n">ReactionArchtype</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Cooperative MM&#39;</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">,),</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Km&#39;</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">),</span>
+    <span class="n">rate_law</span><span class="o">=</span><span class="s1">&#39;Vmax * &amp;S^2 / (Km^2 + &amp;S^2)&#39;</span><span class="p">,</span>
+    <span class="n">assume_parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="n">assume_reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">assume_product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># Substrate inhibition</span>
+<span class="n">substrate_inhibition</span> <span class="o">=</span> <span class="n">ReactionArchtype</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Substrate Inhibition&#39;</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">,),</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Vmax&#39;</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">,</span> <span class="s1">&#39;Ki&#39;</span><span class="p">),</span>
+    <span class="n">rate_law</span><span class="o">=</span><span class="s1">&#39;Vmax * &amp;S / (Km + &amp;S + &amp;S^2/Ki)&#39;</span><span class="p">,</span>
+    <span class="n">assume_parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Ki&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">},</span>
+    <span class="n">assume_reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">assume_product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<h3 id="example-mapk-cascade">Example: MAPK Cascade</h3>
+<p>A classic three-tier signaling cascade (Ras → Raf → MEK → ERK):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelBuilder</span><span class="p">,</span> <span class="n">Reaction</span><span class="p">,</span> <span class="n">ReactionArchtype</span><span class="p">,</span>
+    <span class="n">ArchtypeCollections</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Use simple MM for each phosphorylation step</span>
+<span class="n">mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">michaelis_menten</span>
+
+<span class="n">reactions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Reaction</span><span class="p">(</span>
+        <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+        <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ras&#39;</span><span class="p">,),</span>
+        <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pRaf&#39;</span><span class="p">,),</span>
+        <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;ras_to_raf&#39;</span><span class="p">,</span>
+        <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+        <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ras&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+        <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pRaf&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">),</span>
+    <span class="n">Reaction</span><span class="p">(</span>
+        <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+        <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pRaf&#39;</span><span class="p">,),</span>
+        <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pMEK&#39;</span><span class="p">,),</span>
+        <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;raf_to_mek&#39;</span><span class="p">,</span>
+        <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pRaf&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pMEK&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">),</span>
+    <span class="n">Reaction</span><span class="p">(</span>
+        <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+        <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pMEK&#39;</span><span class="p">,),</span>
+        <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pERK&#39;</span><span class="p">,),</span>
+        <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;mek_to_erk&#39;</span><span class="p">,</span>
+        <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+        <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pMEK&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pERK&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;MAPK_Cascade&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">rxn</span> <span class="ow">in</span> <span class="n">reactions</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="example-regulated-pathway-with-feedback">Example: Regulated Pathway with Feedback</h3>
+<p>A pathway where the output inhibits an upstream step (negative feedback):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span><span class="p">,</span> <span class="n">Reaction</span><span class="p">,</span> <span class="n">ArchtypeCollections</span>
+
+<span class="c1"># Forward reaction with competitive inhibition from downstream species</span>
+<span class="n">forward_arch</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">create_archtype_michaelis_menten</span><span class="p">(</span>
+    <span class="n">competitive_inhibitors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Simple MM for the second step</span>
+<span class="n">mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">michaelis_menten</span>
+
+<span class="c1"># Step 1: S → Sa, inhibited by pO (negative feedback)</span>
+<span class="n">rxn1</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">forward_arch</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Sa&#39;</span><span class="p">,),</span>
+    <span class="n">extra_states</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pO&#39;</span><span class="p">,),</span>                     <span class="c1"># downstream product feeds back</span>
+    <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Kic0&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Sa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># Step 2: Sa → pO</span>
+<span class="n">rxn2</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Sa&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pO&#39;</span><span class="p">,),</span>
+    <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;step2&#39;</span><span class="p">,</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Sa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pO&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;FeedbackPathway&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn2</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="c1"># Verify the feedback mapping</span>
+<span class="n">reg_map</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_regulator_parameter_map</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg_map</span><span class="p">)</span>  <span class="c1"># {&#39;pO&#39;: [&#39;Kic0_J0&#39;]} — pO regulates Kic0 in reaction J0</span>
+</code></pre></div>
+<h3 id="example-time-dependent-drug-perturbation">Example: Time-Dependent Drug Perturbation</h3>
+<p>Add a drug that activates at a specific time point:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span><span class="p">,</span> <span class="n">Reaction</span><span class="p">,</span> <span class="n">ArchtypeCollections</span>
+
+<span class="n">mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">michaelis_menten</span>
+
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Target&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pTarget&#39;</span><span class="p">,),</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Target&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pTarget&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;DrugResponse&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn</span><span class="p">)</span>
+
+<span class="c1"># Drug concentration is 0 before t=500, then jumps to 100</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_simple_piecewise</span><span class="p">(</span>
+    <span class="n">before_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">activation_time</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">after_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">state_name</span><span class="o">=</span><span class="s1">&#39;Drug&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="example-combining-models">Example: Combining Models</h3>
+<p>Merge two independently built models into one:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span>
+
+<span class="n">model_a</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;Upstream&#39;</span><span class="p">)</span>
+<span class="n">model_b</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;Downstream&#39;</span><span class="p">)</span>
+<span class="c1"># ... add reactions to each ...</span>
+
+<span class="n">combined</span> <span class="o">=</span> <span class="n">model_a</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">model_b</span><span class="p">)</span>
+<span class="n">combined</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="export-and-simulation">Export and Simulation</h2>
+<p>After building and precompiling, export to standard formats:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="c1"># Antimony (text format, human-readable)</span>
+<span class="n">antimony_str</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+
+<span class="c1"># SBML (XML, interoperable with many tools)</span>
+<span class="n">sbml_str</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span>
+
+<span class="c1"># Save to files</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_antimony_model_as</span><span class="p">(</span><span class="s1">&#39;pathway.txt&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_sbml_model_as</span><span class="p">(</span><span class="s1">&#39;pathway.xml&#39;</span><span class="p">)</span>
+
+<span class="c1"># Serialize the ModelBuilder object itself</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_model_as_pickle</span><span class="p">(</span><span class="s1">&#39;pathway.pkl&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Then simulate with any solver (see <a href="../solvers_and_simulation/">Solvers &amp; Simulation</a>):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
+
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ScipySolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony_str</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="api-reference">API Reference</h2>
+<h3 id="reactionarchtype">ReactionArchtype</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ReactionArchtype</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>        <span class="c1"># Placeholder names (&amp;S, &amp;E, ...)</span>
+    <span class="n">products</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>         <span class="c1"># Placeholder names (&amp;P, ...)</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>       <span class="c1"># Parameter names (Km, Vmax, ...)</span>
+    <span class="n">rate_law</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>                <span class="c1"># Mathematical expression</span>
+    <span class="n">extra_states</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">assume_parameters_values</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">assume_reactant_values</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">assume_product_values</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reversible</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">reverse_rate_law</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="reaction">Reaction</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="p">:</span> <span class="n">ReactionArchtype</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>                  <span class="c1"># Actual species names</span>
+    <span class="n">products</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>                   <span class="c1"># Actual species names</span>
+    <span class="n">reaction_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>                <span class="c1"># Optional custom name</span>
+    <span class="n">extra_states</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>          <span class="c1"># Regulator species names</span>
+    <span class="n">parameters_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">reactant_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">product_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">zero_init</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="modelbuilder">ModelBuilder</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ModelBuilder</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Reaction management</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">reaction</span><span class="p">:</span> <span class="n">Reaction</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">delete_reaction</span><span class="p">(</span><span class="n">reaction_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="n">ModelBuilder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelBuilder</span>
+<span class="n">model</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">overwrite_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelBuilder</span>
+
+<span class="c1"># Compilation (required before get/set)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="c1"># Parameter and state access</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+
+<span class="c1"># Regulation mapping</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_regulator_parameter_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>   <span class="c1"># {regulator: [params]}</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_parameter_regulator_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>   <span class="c1"># {param: regulator}</span>
+
+<span class="c1"># Custom variables and time-dependent behavior</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_custom_variables</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">rule</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_simple_piecewise</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">after</span><span class="p">,</span> <span class="n">state_name</span><span class="p">)</span>
+
+<span class="c1"># Export</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_antimony_model_as</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_sbml_model_as</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_model_as_pickle</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Summary</span>
+<span class="n">model</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../quick_start/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick Start">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Quick Start
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../network_and_drug_design/" class="md-footer__link md-footer__link--next" aria-label="Next: Network &amp; Drug Design">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Network & Drug Design
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-config.js"></script>
+      
+    
+  </body>
+</html>
