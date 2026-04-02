@@ -6,6 +6,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Generate virtual cell data using ODE models for ML benchmarking and drug response modeling">
+      
+      
+        <meta name="author" content="Dawson Lan">
       
       
         <link rel="canonical" href="https://synthetic-models.github.io/advanced_workflows/">
@@ -13,6 +17,8 @@
       
         <link rel="prev" href="../data_generation/">
       
+      
+        <link rel="next" href="../api_reference/">
       
       
         
@@ -51,6 +57,8 @@
     
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -88,9 +96,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Synthetic" class="md-header__button md-logo" aria-label="Synthetic" data-md-component="logo">
       
@@ -160,6 +166,96 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quick_start/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../model_building/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api_reference/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -173,8 +269,10 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Synthetic" class="md-nav__button md-logo" aria-label="Synthetic" data-md-component="logo">
       
@@ -220,6 +318,58 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../quick_start/" class="md-nav__link">
         
@@ -240,9 +390,74 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -267,9 +482,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -294,9 +510,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -321,9 +538,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -348,9 +566,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
     
@@ -694,6 +913,129 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
   </ul>
 </nav>
@@ -1010,12 +1352,16 @@
 
 
 
-<h1 id="advanced-workflows">Advanced Workflows</h1>
-<h2 id="kinetic-parameter-tuning">Kinetic Parameter Tuning</h2>
+<h1 id="advanced-workflows">Advanced Workflows<a class="headerlink" href="#advanced-workflows" title="Permanent link">&para;</a></h1>
+<h2 id="kinetic-parameter-tuning">Kinetic Parameter Tuning<a class="headerlink" href="#kinetic-parameter-tuning" title="Permanent link">&para;</a></h2>
 <p>The <code>KineticParameterTuner</code> generates kinetic parameters that ensure robust signal propagation through the network. Without tuning, random parameter values may produce unresponsive dynamics or 'flat' responses unintentionally.</p>
-<h3 id="why-tuning-matters">Why Tuning Matters</h3>
+<div class="admonition tip">
+<p class="admonition-title">When to use tuning</p>
+<p>Use kinetic tuning whenever you want predictable, responsive network dynamics. It is enabled by default in <code>Builder.specify()</code>. You only need the manual approach below if you're using the low-level API directly.</p>
+</div>
+<h3 id="why-tuning-matters">Why Tuning Matters<a class="headerlink" href="#why-tuning-matters" title="Permanent link">&para;</a></h3>
 <p>In hierarchical signaling networks, signal propagation depends on the balance between forward (activation) and backward (deactivation) reaction rates. The tuner solves the full nonlinear kinetic equations to find parameters where each species reaches a target active percentage.</p>
-<h3 id="usage-via-virtualcell">Usage via VirtualCell</h3>
+<h3 id="usage-via-virtualcell">Usage via VirtualCell<a class="headerlink" href="#usage-via-virtualcell" title="Permanent link">&para;</a></h3>
 <p>Tuning is enabled by default when compiling:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 
@@ -1037,7 +1383,7 @@
     <span class="n">v_max_f_random_range</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>     <span class="c1"># Forward Vmax range</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="accessing-tuning-results">Accessing Tuning Results</h3>
+<h3 id="accessing-tuning-results">Accessing Tuning Results<a class="headerlink" href="#accessing-tuning-results" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Target concentrations the tuner aimed for</span>
 <span class="n">targets</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">species</span><span class="p">,</span> <span class="n">concentration</span> <span class="ow">in</span> <span class="n">targets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -1048,7 +1394,7 @@
 <span class="k">for</span> <span class="n">regulator</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">regulator_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regulator </span><span class="si">{</span><span class="n">regulator</span><span class="si">}</span><span class="s2"> affects: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="direct-usage">Direct Usage</h3>
+<h3 id="direct-usage">Direct Usage<a class="headerlink" href="#direct-usage" title="Permanent link">&para;</a></h3>
 <p>Use <code>KineticParameterTuner</code> without the high-level API:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.DegreeInteractionSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegreeInteractionSpec</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Drug</span><span class="w"> </span><span class="kn">import</span> <span class="n">Drug</span>
@@ -1088,9 +1434,9 @@
 <span class="c1"># Get target concentrations for validation</span>
 <span class="n">target_concentrations</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="parameter-estimation">Parameter Estimation</h2>
+<h2 id="parameter-estimation">Parameter Estimation<a class="headerlink" href="#parameter-estimation" title="Permanent link">&para;</a></h2>
 <p>Synthetic models can serve as ground truth for testing parameter estimation methods. Since you know the true parameters, you can validate calibration algorithms. Typically, in real experiments, you have sparse timecourse data for a few species, so we will mimic that scenario.</p>
-<h3 id="setup-ground-truth-sparse-observations">Setup: Ground Truth + Sparse Observations</h3>
+<h3 id="setup-ground-truth-sparse-observations">Setup: Ground Truth + Sparse Observations<a class="headerlink" href="#setup-ground-truth-sparse-observations" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
@@ -1114,12 +1460,12 @@
 <span class="n">sparse_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">timecourse_full</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sparse_times</span><span class="p">]</span>
 <span class="n">timecourse_sparse</span> <span class="o">=</span> <span class="n">timecourse_full</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sparse_indices</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="parameter-selection">Parameter Selection</h3>
+<h3 id="parameter-selection">Parameter Selection<a class="headerlink" href="#parameter-selection" title="Permanent link">&para;</a></h3>
 <p>Select identifiable parameters for estimation (typically <code>Km</code> and <code>Vmax</code> values):</p>
 <div class="highlight"><pre><span></span><code><span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">true_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Km_&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Vmax_&#39;</span><span class="p">)][:</span><span class="mi">12</span><span class="p">]</span>
 <span class="n">true_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">true_params</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">param_names</span><span class="p">])</span>
 </code></pre></div>
-<h3 id="objective-function">Objective Function</h3>
+<h3 id="objective-function">Objective Function<a class="headerlink" href="#objective-function" title="Permanent link">&para;</a></h3>
 <p>Define an objective that simulates with trial parameters and computes MSE against sparse observations:</p>
 <div class="highlight"><pre><span></span><code><span class="n">species_to_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">timecourse_sparse</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
 
@@ -1142,7 +1488,7 @@
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="optimization">Optimization</h3>
+<h3 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">&para;</a></h3>
 <p>Run optimization in log-space to enforce positivity:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
 
@@ -1161,7 +1507,7 @@
 
 <span class="n">estimated_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="evaluating-results">Evaluating Results</h3>
+<h3 id="evaluating-results">Evaluating Results<a class="headerlink" href="#evaluating-results" title="Permanent link">&para;</a></h3>
 <p>Compare estimated parameters to ground truth:</p>
 <p><img alt="Ground truth vs sparse observations" src="../images/param_estimation_observations.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_names</span><span class="p">):</span>
@@ -1175,9 +1521,9 @@
 <span class="n">solver</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_names</span><span class="p">,</span> <span class="n">estimated_values</span><span class="p">)))</span>
 <span class="n">timecourse_fitted</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="model-export-interoperability">Model Export &amp; Interoperability</h2>
+<h2 id="model-export-interoperability">Model Export &amp; Interoperability<a class="headerlink" href="#model-export-interoperability" title="Permanent link">&para;</a></h2>
 <p>Export Synthetic models to standard formats for use in other tools.</p>
-<h3 id="sbml-export">SBML Export</h3>
+<h3 id="sbml-export">SBML Export<a class="headerlink" href="#sbml-export" title="Permanent link">&para;</a></h3>
 <p>SBML (Systems Biology Markup Language) is the standard for sharing biochemical models:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 
@@ -1191,7 +1537,7 @@
 <span class="n">sbml_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span>
 </code></pre></div>
 <p>SBML files can be imported into COPASI, libRoadRunner, and other SBML-compliant tools.</p>
-<h3 id="antimony-export">Antimony Export</h3>
+<h3 id="antimony-export">Antimony Export<a class="headerlink" href="#antimony-export" title="Permanent link">&para;</a></h3>
 <p>Antimony is a human-readable format for model inspection and modification:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Save to file</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_antimony_model_as</span><span class="p">(</span><span class="s1">&#39;synthetic_model.ant&#39;</span><span class="p">)</span>
@@ -1199,7 +1545,7 @@
 <span class="c1"># Get as string</span>
 <span class="n">antimony_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="model-inspection">Model Inspection</h3>
+<h3 id="model-inspection">Model Inspection<a class="headerlink" href="#model-inspection" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Model overview</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
@@ -1208,9 +1554,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reactions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">reactions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="ml-benchmarking">ML Benchmarking</h2>
+<h2 id="ml-benchmarking">ML Benchmarking<a class="headerlink" href="#ml-benchmarking" title="Permanent link">&para;</a></h2>
 <p>Synthetic datasets are designed for benchmarking machine learning models with known ground truth.</p>
-<h3 id="traintest-with-sklearn">Train/Test with sklearn</h3>
+<h3 id="traintest-with-sklearn">Train/Test with sklearn<a class="headerlink" href="#traintest-with-sklearn" title="Permanent link">&para;</a></h3>
 <p><img alt="ML model comparison by Pearson correlation" src="../images/ml_model_comparison.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1224,7 +1570,7 @@
 <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R^2 score: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="comparing-feature-types">Comparing Feature Types</h3>
+<h3 id="comparing-feature-types">Comparing Feature Types<a class="headerlink" href="#comparing-feature-types" title="Permanent link">&para;</a></h3>
 <p>Compare predictive power of different feature representations:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -1243,9 +1589,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kinetic params R^2: </span><span class="si">{</span><span class="n">r2_params</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timecourse R^2: </span><span class="si">{</span><span class="n">r2_tc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="low-level-api-access">Low-Level API Access</h2>
+<h2 id="low-level-api-access">Low-Level API Access<a class="headerlink" href="#low-level-api-access" title="Permanent link">&para;</a></h2>
 <p>For maximum control, bypass the high-level <code>Builder</code>/<code>VirtualCell</code> API and use the underlying components directly.</p>
-<h3 id="direct-spec-usage">Direct Spec Usage</h3>
+<h3 id="direct-spec-usage">Direct Spec Usage<a class="headerlink" href="#direct-spec-usage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.DegreeInteractionSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegreeInteractionSpec</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Drug</span><span class="w"> </span><span class="kn">import</span> <span class="n">Drug</span>
 
@@ -1263,7 +1609,7 @@
 <span class="p">)</span>
 <span class="n">spec</span><span class="o">.</span><span class="n">add_drug</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="direct-model-building">Direct Model Building</h3>
+<h3 id="direct-model-building">Direct Model Building<a class="headerlink" href="#direct-model-building" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Generate network from specification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">generate_network</span><span class="p">(</span>
     <span class="n">network_name</span><span class="o">=</span><span class="s2">&quot;MyNetwork&quot;</span><span class="p">,</span>
@@ -1281,7 +1627,7 @@
 <span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="s1">&#39;Km_J0&#39;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;R1_1&#39;</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="direct-solver-usage">Direct Solver Usage</h3>
+<h3 id="direct-solver-usage">Direct Solver Usage<a class="headerlink" href="#direct-solver-usage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.ScipySolver</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScipySolver</span>
 
 <span class="c1"># Get model string and simulate</span>
@@ -1295,6 +1641,15 @@
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
+<hr />
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="../network_and_drug_design/">Network &amp; Drug Design</a> — creating network specifications</li>
+<li><a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> — solver configuration and usage</li>
+<li><a href="../data_generation/">Data Generation</a> — generating datasets with perturbation strategies</li>
+<li><a href="../api_reference/">API Reference</a> — full API docs for <code>KineticParameterTuner</code> and other classes</li>
+<li><a href="../faq/">FAQ</a> — common questions about simulation and parameter tuning</li>
+</ul>
 
 
 
@@ -1314,6 +1669,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -1339,6 +1700,22 @@
             </div>
           </a>
         
+        
+          
+          <a href="../api_reference/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                API Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
@@ -1368,7 +1745,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.top", "navigation.sections", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
