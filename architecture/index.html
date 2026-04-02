@@ -12,13 +12,13 @@
         <meta name="author" content="Dawson Lan">
       
       
-        <link rel="canonical" href="https://synthetic-models.github.io/quick_start/">
+        <link rel="canonical" href="https://synthetic-models.github.io/architecture/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../data_generation/">
       
       
-        <link rel="next" href="../model_building/">
+        <link rel="next" href="../model_export/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Quick Start - Synthetic</title>
+        <title>Architecture - Synthetic</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quick-start" class="md-skip">
+        <a href="#architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick Start
+              Architecture
             
           </span>
         </div>
@@ -226,8 +226,6 @@
       
   
   
-    
-  
   
   
     
@@ -240,11 +238,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -265,7 +263,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -280,37 +278,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
         
   
   
@@ -326,98 +297,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#your-first-dataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Your First Dataset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customizing-your-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing Your Model
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customizing Your Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#network-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Network Size
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reproducibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reproducibility
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parallel-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parallel Processing
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -434,8 +313,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -446,11 +327,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -471,7 +352,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -598,10 +479,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -617,6 +525,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec-layer-what-the-network-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spec Layer — What the network looks like
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-layer-the-actual-ode-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Layer — The actual ODE system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solver-layer-runs-the-math-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Layer — Runs the math locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpsolver-remote-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPSolver — Remote simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-flexibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modular Flexibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting Modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -855,33 +866,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#your-first-dataset" class="md-nav__link">
+  <a href="#layers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Your First Dataset
+        Layers
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customizing-your-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing Your Model
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customizing Your Model">
+    <nav class="md-nav" aria-label="Layers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#network-size" class="md-nav__link">
+  <a href="#spec-layer-what-the-network-looks-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Network Size
+        Spec Layer — What the network looks like
       
     </span>
   </a>
@@ -889,10 +889,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reproducibility" class="md-nav__link">
+  <a href="#model-layer-the-actual-ode-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reproducibility
+        Model Layer — The actual ODE system
       
     </span>
   </a>
@@ -900,10 +900,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#parallel-processing" class="md-nav__link">
+  <a href="#solver-layer-runs-the-math-locally" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parallel Processing
+        Solver Layer — Runs the math locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpsolver-remote-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPSolver — Remote simulation
       
     </span>
   </a>
@@ -916,10 +927,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#modular-flexibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Modular Flexibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting Modules
       
     </span>
   </a>
@@ -943,61 +965,204 @@
 
 
 
-<h1 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h1>
-<h2 id="your-first-dataset">Your First Dataset<a class="headerlink" href="#your-first-dataset" title="Permanent link">&para;</a></h2>
-<p>Generate a synthetic drug response dataset in three lines:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">make_dataset_drug_response</span>
+<h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h1>
+<p>Synthetic follows a <strong>three-layer pipeline</strong> where each layer is independently pluggable. You can swap specs, compose custom reactions, or change solver backends without touching the rest of the system.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph Facade["Facade"]
+        Builder["Builder"]
+        VC["VirtualCell"]
+    end
 
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">)</span>
+    subgraph SpecLayer["Spec Layer — Network Topology"]
+        BS["BaseSpec&lt;br/&gt;&lt;i&gt;abstract&lt;/i&gt;"]
+        MNS["MichaelisNetworkSpec"]
+        DIS["DegreeInteractionSpec"]
+        Drug["Drug"]
+        Reg["Regulation"]
+    end
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Feature matrix shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (1000, n_features)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target vector shape: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># (1000,)</span>
-</code></pre></div>
-<ol>
-<li>
-<p><strong><code>Builder.specify([3, 5])</code></strong> creates a virtual cell with a hierarchical signaling network. The <code>[3, 5]</code> argument defines the network topology: 3 cascades at degree 1 (closest to the drug target) and 5 cascades at degree 2 (downstream effectors). A drug is auto-generated that targets the degree 1 receptor species.</p>
-</li>
-<li>
-<p><strong><code>make_dataset_drug_response(1000, ...)</code></strong> generates 1000 samples by perturbing initial conditions and kinetic parameters, simulating the ODE model with each perturbation, and extracting the outcome species <code>Oa</code> (activated outcome) as the target. The result is a scikit-learn-compatible feature matrix <code>X</code> (species concentrations) and target vector <code>y</code> (drug response).</p>
-</li>
-</ol>
-<h2 id="customizing-your-model">Customizing Your Model<a class="headerlink" href="#customizing-your-model" title="Permanent link">&para;</a></h2>
-<h3 id="network-size">Network Size<a class="headerlink" href="#network-size" title="Permanent link">&para;</a></h3>
-<p>Control the complexity by changing <code>degree_cascades</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Small network</span>
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    subgraph ModelLayer["Model Layer — ODE System"]
+        RA["ReactionArchtype&lt;br/&gt;&lt;i&gt;rate law templates&lt;/i&gt;"]
+        Rxn["Reaction&lt;br/&gt;&lt;i&gt;species binding&lt;/i&gt;"]
+        MB["ModelBuilder&lt;br/&gt;&lt;i&gt;aggregation &amp;amp; export&lt;/i&gt;"]
+    end
 
-<span class="c1"># Larger network with more degrees</span>
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
-</code></pre></div>
-<h3 id="reproducibility">Reproducibility<a class="headerlink" href="#reproducibility" title="Permanent link">&para;</a></h3>
-<p>Set a random seed for reproducible results:</p>
-<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="parallel-processing">Parallel Processing<a class="headerlink" href="#parallel-processing" title="Permanent link">&para;</a></h3>
-<p>Use <code>n_cores=-1</code> to use all available CPUs and <code>verbose=True</code> to show progress:</p>
-<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">n_cores</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+    subgraph SolverLayer["Solver Layer — Local Simulation"]
+        SS["ScipySolver&lt;br/&gt;&lt;i&gt;Antimony + JIT&lt;/i&gt;"]
+        RS["RoadrunnerSolver&lt;br/&gt;&lt;i&gt;SBML&lt;/i&gt;"]
+    end
+
+    subgraph RemoteLayer["Remote — External Server"]
+        HS["HTTPSolver&lt;br/&gt;&lt;i&gt;client-side proxy&lt;/i&gt;"]
+        Server["Remote Server&lt;br/&gt;&lt;i&gt;model + simulation&lt;/i&gt;"]
+    end
+
+    Builder --&gt;|specify| VC
+    VC --&gt;|internally| DIS
+
+    BS --&gt; MNS --&gt; DIS
+    DIS -.-&gt; Drug
+    DIS -.-&gt; Reg
+
+    DIS --&gt;|generate_network| MB
+    RA --&gt; Rxn --&gt; MB
+
+    MB --&gt;|"Antimony"| SS
+    MB --&gt;|"SBML"| RS
+
+    SS --&gt; DF["pandas DataFrame"]
+    RS --&gt; DF
+
+    HS --&gt;|"HTTP request"| Server
+    Server --&gt;|"response"| DF</code></pre>
+<h2 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
+<h3 id="spec-layer-what-the-network-looks-like">Spec Layer — <em>What the network looks like</em><a class="headerlink" href="#spec-layer-what-the-network-looks-like" title="Permanent link">&para;</a></h3>
+<p>Defines species lists, regulations (including feedback), and drug interactions — no concrete math.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BaseSpec</code></td>
+<td>Abstract base — defines the contract for all specifications</td>
+</tr>
+<tr>
+<td><code>MichaelisNetworkSpec</code></td>
+<td>Generic Michaelis-Menten networks with drug mechanisms</td>
+</tr>
+<tr>
+<td><code>DegreeInteractionSpec</code></td>
+<td>Multi-degree hierarchical drug interaction networks</td>
+</tr>
+<tr>
+<td><code>Drug</code></td>
+<td>Drug species with targets, timing, and regulation type</td>
+</tr>
+<tr>
+<td><code>Regulation</code></td>
+<td>Feedback and cross-talk regulation rules</td>
+</tr>
+</tbody>
+</table>
+<p>Output: a fully specified network topology passed to <code>generate_network()</code>.</p>
+<h3 id="model-layer-the-actual-ode-system">Model Layer — <em>The actual ODE system</em><a class="headerlink" href="#model-layer-the-actual-ode-system" title="Permanent link">&para;</a></h3>
+<p>Converts network topology into a concrete system of reactions with parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ReactionArchtype</code></td>
+<td>Reusable rate law templates (mass action, Michaelis-Menten, etc.) with placeholder species (<code>&amp;S</code>, <code>&amp;R</code>)</td>
+</tr>
+<tr>
+<td><code>Reaction</code></td>
+<td>Binds an archtype to real species names and maps regulators to parameters</td>
+</tr>
+<tr>
+<td><code>ModelBuilder</code></td>
+<td>Aggregates reactions, compiles state/parameter dictionaries, exports Antimony or SBML</td>
+</tr>
+</tbody>
+</table>
+<p>Output: Antimony or SBML model strings ready for simulation.</p>
+<h3 id="solver-layer-runs-the-math-locally">Solver Layer — <em>Runs the math locally</em><a class="headerlink" href="#solver-layer-runs-the-math-locally" title="Permanent link">&para;</a></h3>
+<p>Pluggable simulation backends with a unified <code>compile()</code> / <code>simulate()</code> interface. These take a model (Antimony or SBML) and run the ODE integration in-process.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Input</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ScipySolver</code></td>
+<td>Antimony</td>
+<td>Batch simulations, parameter sweeps (optional numba JIT)</td>
+</tr>
+<tr>
+<td><code>RoadrunnerSolver</code></td>
+<td>SBML</td>
+<td>Complex models, single robust simulations</td>
+</tr>
+</tbody>
+</table>
+<p>Output: <code>pandas DataFrame</code> with <code>time</code> column and species columns.</p>
+<h3 id="httpsolver-remote-simulation">HTTPSolver — <em>Remote simulation</em><a class="headerlink" href="#httpsolver-remote-simulation" title="Permanent link">&para;</a></h3>
+<p>Unlike the local solvers, <code>HTTPSolver</code> does <strong>not</strong> receive a model to simulate. Instead, it acts as a client-side proxy — the remote server owns both the model and the simulation engine. The client only sends simulation parameters and receives results back.</p>
+<p>This makes <code>HTTPSolver</code> architecturally distinct: it bypasses the local Spec → Model → Solver pipeline entirely, delegating everything to an external service.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPSolver</code></td>
+<td>Client that sends simulation requests to a remote server endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../advanced_features/">Advanced Features</a> for client and server setup details.</p>
+<h2 id="modular-flexibility">Modular Flexibility<a class="headerlink" href="#modular-flexibility" title="Permanent link">&para;</a></h2>
+<p>Each layer has a well-defined interface, so you can:</p>
 <ul>
-<li><a href="../network_and_drug_design/">Network &amp; Drug Design</a> - Understand network topology and drug mechanisms</li>
-<li><a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> - Direct solver usage and timecourse simulation</li>
-<li><a href="../data_generation/">Data Generation</a> - Perturbation strategies, extended formats, and feature analysis</li>
-<li><a href="../advanced_features/">Advanced Features</a> - Kinetic tuning, HTTP solver</li>
-<li><a href="../model_export/">Model Export</a> - Model export and interoperability</li>
-<li><a href="../benchmarking/">Benchmarking</a> - Parameter estimation, ML benchmarking</li>
-<li><a href="../api_reference/">API Reference</a> - Full API documentation</li>
+<li><strong>Swap specs</strong> — use <code>DegreeInteractionSpec</code> for hierarchical networks or <code>MichaelisNetworkSpec</code> for generic topologies</li>
+<li><strong>Compose reactions</strong> — mix archtypes freely within a single <code>ModelBuilder</code> to build arbitrary networks</li>
+<li><strong>Swap solvers</strong> — the same <code>ModelBuilder</code> output feeds any local solver backend</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Using the low-level API?</p>
-<p>When building models directly with <code>ModelBuilder</code>, <code>Reaction</code>, or <code>ReactionArchtype</code>, you must call <code>model.precompile()</code> before accessing parameters or simulating. The high-level <code>Builder.specify()</code> API handles this automatically. See <a href="../model_building/">Model Building</a> for details.</p>
-</div>
+<pre class="mermaid"><code>graph LR
+    subgraph "Swap the Spec"
+        S1["DegreeInteractionSpec"] --&gt; M["ModelBuilder"]
+        S2["MichaelisNetworkSpec"] --&gt; M
+    end
+
+    subgraph "Swap the Solver"
+        M --&gt;|"Antimony"| A["ScipySolver"]
+        M --&gt;|"SBML"| B["RoadrunnerSolver"]
+    end
+</code></pre>
+<h2 id="supporting-modules">Supporting Modules<a class="headerlink" href="#supporting-modules" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>utils/</strong></td>
+<td>Parameter randomization, initial condition generation, kinetic tuning, feature/target data helpers</td>
+</tr>
+<tr>
+<td><strong>SyntheticGenUtils/</strong></td>
+<td>Data processing, parallel simulation, perturbation strategies, validation</td>
+</tr>
+</tbody>
+</table>
+<p>These are used internally by the high-level API (<code>Builder</code>, <code>make_dataset_drug_response</code>) but can also be called directly for fine-grained control.</p>
+<hr />
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="../model_building/">Model Building</a> — working with reactions and archtypes directly</li>
+<li><a href="../network_and_drug_design/">Network &amp; Drug Design</a> — configuring specs and drugs</li>
+<li><a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> — solver configuration and usage</li>
+<li><a href="../advanced_features/">Advanced Features</a> — HTTPSolver client and server setup</li>
+<li><a href="../api_reference/">API Reference</a> — full API docs for all classes</li>
+</ul>
 
 
 
@@ -1033,7 +1198,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+          <a href="../data_generation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Generation">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1043,20 +1208,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Data Generation
               </div>
             </div>
           </a>
         
         
           
-          <a href="../model_building/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Building">
+          <a href="../model_export/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Export &amp; Interoperability">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Model Building
+                Model Export & Interoperability
               </div>
             </div>
             <div class="md-footer__button md-icon">

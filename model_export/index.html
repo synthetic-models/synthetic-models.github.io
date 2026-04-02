@@ -12,13 +12,13 @@
         <meta name="author" content="Dawson Lan">
       
       
-        <link rel="canonical" href="https://synthetic-models.github.io/quick_start/">
+        <link rel="canonical" href="https://synthetic-models.github.io/model_export/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../architecture/">
       
       
-        <link rel="next" href="../model_building/">
+        <link rel="next" href="../benchmarking/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Quick Start - Synthetic</title>
+        <title>Model Export & Interoperability - Synthetic</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quick-start" class="md-skip">
+        <a href="#model-export-interoperability" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick Start
+              Model Export & Interoperability
             
           </span>
         </div>
@@ -226,8 +226,6 @@
       
   
   
-    
-  
   
   
     
@@ -240,11 +238,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -265,7 +263,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -280,37 +278,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
         
   
   
@@ -326,98 +297,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#your-first-dataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Your First Dataset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customizing-your-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing Your Model
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customizing Your Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#network-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Network Size
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reproducibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reproducibility
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parallel-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parallel Processing
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -434,8 +313,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -446,11 +327,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -471,7 +352,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -626,10 +507,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../model_export/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Export & Interoperability
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -645,6 +553,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sbml-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SBML Export
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antimony-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antimony Export
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Inspection
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -855,10 +816,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#your-first-dataset" class="md-nav__link">
+  <a href="#sbml-export" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Your First Dataset
+        SBML Export
       
     </span>
   </a>
@@ -866,60 +827,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#customizing-your-model" class="md-nav__link">
+  <a href="#antimony-export" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Customizing Your Model
+        Antimony Export
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Customizing Your Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#network-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Network Size
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reproducibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reproducibility
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parallel-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parallel Processing
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#model-inspection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Model Inspection
       
     </span>
   </a>
@@ -943,61 +865,46 @@
 
 
 
-<h1 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h1>
-<h2 id="your-first-dataset">Your First Dataset<a class="headerlink" href="#your-first-dataset" title="Permanent link">&para;</a></h2>
-<p>Generate a synthetic drug response dataset in three lines:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">make_dataset_drug_response</span>
+<h1 id="model-export-interoperability">Model Export &amp; Interoperability<a class="headerlink" href="#model-export-interoperability" title="Permanent link">&para;</a></h1>
+<p>Export Synthetic models to standard formats for use in other tools.</p>
+<h2 id="sbml-export">SBML Export<a class="headerlink" href="#sbml-export" title="Permanent link">&para;</a></h2>
+<p>SBML (Systems Biology Markup Language) is the standard for sharing biochemical models:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
 
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Feature matrix shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (1000, n_features)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target vector shape: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># (1000,)</span>
-</code></pre></div>
-<ol>
-<li>
-<p><strong><code>Builder.specify([3, 5])</code></strong> creates a virtual cell with a hierarchical signaling network. The <code>[3, 5]</code> argument defines the network topology: 3 cascades at degree 1 (closest to the drug target) and 5 cascades at degree 2 (downstream effectors). A drug is auto-generated that targets the degree 1 receptor species.</p>
-</li>
-<li>
-<p><strong><code>make_dataset_drug_response(1000, ...)</code></strong> generates 1000 samples by perturbing initial conditions and kinetic parameters, simulating the ODE model with each perturbation, and extracting the outcome species <code>Oa</code> (activated outcome) as the target. The result is a scikit-learn-compatible feature matrix <code>X</code> (species concentrations) and target vector <code>y</code> (drug response).</p>
-</li>
-</ol>
-<h2 id="customizing-your-model">Customizing Your Model<a class="headerlink" href="#customizing-your-model" title="Permanent link">&para;</a></h2>
-<h3 id="network-size">Network Size<a class="headerlink" href="#network-size" title="Permanent link">&para;</a></h3>
-<p>Control the complexity by changing <code>degree_cascades</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Small network</span>
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="c1"># Save to file</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_sbml_model_as</span><span class="p">(</span><span class="s1">&#39;synthetic_model.sbml&#39;</span><span class="p">)</span>
 
-<span class="c1"># Larger network with more degrees</span>
-<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
+<span class="c1"># Get as string</span>
+<span class="n">sbml_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="reproducibility">Reproducibility<a class="headerlink" href="#reproducibility" title="Permanent link">&para;</a></h3>
-<p>Set a random seed for reproducible results:</p>
-<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<p>SBML files can be imported into COPASI, libRoadRunner, and other SBML-compliant tools.</p>
+<h2 id="antimony-export">Antimony Export<a class="headerlink" href="#antimony-export" title="Permanent link">&para;</a></h2>
+<p>Antimony is a human-readable format for model inspection and modification:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Save to file</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_antimony_model_as</span><span class="p">(</span><span class="s1">&#39;synthetic_model.ant&#39;</span><span class="p">)</span>
+
+<span class="c1"># Get as string</span>
+<span class="n">antimony_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="parallel-processing">Parallel Processing<a class="headerlink" href="#parallel-processing" title="Permanent link">&para;</a></h3>
-<p>Use <code>n_cores=-1</code> to use all available CPUs and <code>verbose=True</code> to show progress:</p>
-<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">n_cores</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
+<h2 id="model-inspection">Model Inspection<a class="headerlink" href="#model-inspection" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Model overview</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Species: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_state_variables</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reactions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">reactions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<hr />
+<p><strong>See also:</strong></p>
 <ul>
-<li><a href="../network_and_drug_design/">Network &amp; Drug Design</a> - Understand network topology and drug mechanisms</li>
-<li><a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> - Direct solver usage and timecourse simulation</li>
-<li><a href="../data_generation/">Data Generation</a> - Perturbation strategies, extended formats, and feature analysis</li>
-<li><a href="../advanced_features/">Advanced Features</a> - Kinetic tuning, HTTP solver</li>
-<li><a href="../model_export/">Model Export</a> - Model export and interoperability</li>
-<li><a href="../benchmarking/">Benchmarking</a> - Parameter estimation, ML benchmarking</li>
-<li><a href="../api_reference/">API Reference</a> - Full API documentation</li>
+<li><a href="../model_building/">Model Building</a> — constructing models from scratch</li>
+<li><a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> — running simulations on exported models</li>
+<li><a href="../api_reference/">API Reference</a> — full API docs for <code>ModelBuilder</code></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Using the low-level API?</p>
-<p>When building models directly with <code>ModelBuilder</code>, <code>Reaction</code>, or <code>ReactionArchtype</code>, you must call <code>model.precompile()</code> before accessing parameters or simulating. The high-level <code>Builder.specify()</code> API handles this automatically. See <a href="../model_building/">Model Building</a> for details.</p>
-</div>
 
 
 
@@ -1033,7 +940,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+          <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1043,20 +950,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Architecture
               </div>
             </div>
           </a>
         
         
           
-          <a href="../model_building/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Building">
+          <a href="../benchmarking/" class="md-footer__link md-footer__link--next" aria-label="Next: Benchmarking Scenarios">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Model Building
+                Benchmarking Scenarios
               </div>
             </div>
             <div class="md-footer__button md-icon">

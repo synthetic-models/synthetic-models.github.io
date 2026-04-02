@@ -5,11 +5,19 @@
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
-         <loc>https://synthetic-models.github.io/advanced_workflows/</loc>
+         <loc>https://synthetic-models.github.io/advanced_features/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
          <loc>https://synthetic-models.github.io/api_reference/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
+         <loc>https://synthetic-models.github.io/architecture/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
+         <loc>https://synthetic-models.github.io/benchmarking/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
@@ -22,6 +30,10 @@
     </url>
     <url>
          <loc>https://synthetic-models.github.io/model_building/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
+         <loc>https://synthetic-models.github.io/model_export/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
