@@ -1,0 +1,1313 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Generate virtual cell data using ODE models for ML benchmarking and drug response modeling">
+      
+      
+        <meta name="author" content="Dawson Lan">
+      
+      
+        <link rel="canonical" href="https://synthetic-models.github.io/obtaining_data/">
+      
+      
+        <link rel="prev" href="../solving_odes/">
+      
+      
+        <link rel="next" href="../use_cases/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Obtaining Data - Synthetic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#obtaining-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Synthetic" class="md-header__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Synthetic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Obtaining Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Synthetic" class="md-nav__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Synthetic
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solving_odes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solving ODEs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Obtaining Data
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Obtaining Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-basic-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Basic Call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#levels-of-data-per-sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Levels of Data per Sample
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-gets-perturbed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Gets Perturbed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perturbing-kinetic-parameters-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perturbing Kinetic Parameters Too
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproducibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extended-return-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extended Return Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Choice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-analysis-which-species-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Analysis: Which Species Matter?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-basic-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Basic Call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#levels-of-data-per-sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Levels of Data per Sample
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-gets-perturbed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Gets Perturbed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perturbing-kinetic-parameters-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perturbing Kinetic Parameters Too
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproducibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extended-return-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extended Return Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver Choice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-analysis-which-species-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Analysis: Which Species Matter?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="obtaining-data">Obtaining Data<a class="headerlink" href="#obtaining-data" title="Permanent link">&para;</a></h1>
+<p>A single simulation gives you one timecourse. To make a <em>dataset</em>, you need to vary the model — perturb initial conditions, perturb kinetic parameters, or both — and simulate each variation. That's what <code>make_dataset_drug_response</code> does.</p>
+<p>This page covers the shape of the resulting dataset, the perturbation strategies, and how to control what's exposed per sample.</p>
+<h2 id="the-basic-call">The Basic Call<a class="headerlink" href="#the-basic-call" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">make_dataset_drug_response</span>
+
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Features: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (1000, n_features)  — one column per species</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target:   </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (1000,)             — one value per simulation</span>
+</code></pre></div>
+<ul>
+<li><code>X</code> is a <code>pandas.DataFrame</code>. Each column is a species name (<code>R1_1</code>, <code>I1_1</code>, <code>Oa</code>, ...). Each row is one simulation.</li>
+<li><code>y</code> is a <code>pandas.Series</code>. The value is the concentration of the target species at the end of the simulation.</li>
+<li>The two are aligned: row <code>i</code> of <code>X</code> and element <code>i</code> of <code>y</code> came from the same perturbed run.</li>
+</ul>
+<p>The result drops into any scikit-learn workflow unchanged.</p>
+<h2 id="levels-of-data-per-sample">Levels of Data per Sample<a class="headerlink" href="#levels-of-data-per-sample" title="Permanent link">&para;</a></h2>
+<p><code>make_dataset_drug_response</code> exposes a <em>spectrum</em> of information per simulation. You choose how much to take.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Flag</th>
+<th>What you get per sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (default)</td>
+<td>none</td>
+<td>Initial-condition features (one per species) and the final value of the target species</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>return_timecourse=True</code></td>
+<td>+ full numpy-array timecourse for every species</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(no flag — comes with level 1)</td>
+<td>+ DataFrame of kinetic parameters (<code>Km_J0</code>, <code>Vmax_J1</code>, ...)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(derived in user code)</td>
+<td>Last-point features of the activated species, or any other timecourse-derived representation</td>
+</tr>
+</tbody>
+</table>
+<p>Level 0 is enough for most regression use cases. Level 1 unlocks the full simulation history — useful for parameter estimation (you can mimic sparse experimental observations), timecourse feature engineering, and validation. Level 3 is what ML papers actually compare when they ask "which feature representation predicts drug response best?" — see <a href="../use_cases/#use-case-3-comparing-ml-models-on-different-feature-representations">Use Cases</a>.</p>
+<h2 id="what-gets-perturbed">What Gets Perturbed<a class="headerlink" href="#what-gets-perturbed" title="Permanent link">&para;</a></h2>
+<p>By default, each sample uses a <em>conservation-rules</em> perturbation: the total concentration of each species pair (e.g., <code>R1_1 + R1_1a</code>) is held constant, but the <em>ratio</em> between the inactive and active forms is varied. This produces biologically plausible initial conditions — you never get "all zero" or "all active" start states.</p>
+<p>To use a different distribution:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Gaussian perturbation of initial conditions</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">perturbation_type</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span>
+    <span class="n">perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rsd&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">},</span>  <span class="c1"># 20% relative standard deviation</span>
+<span class="p">)</span>
+
+<span class="c1"># Lognormal perturbation</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">perturbation_type</span><span class="o">=</span><span class="s1">&#39;lognormal&#39;</span><span class="p">,</span>
+    <span class="n">perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rsd&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># Latin Hypercube Sampling — better space-filling</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">perturbation_type</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">,</span>
+    <span class="n">perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rsd&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Distribution</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conserve_rules</code></td>
+<td>Conservation-law ratio (default)</td>
+<td><code>shape</code>, <code>base_shape</code>, <code>max_shape</code></td>
+</tr>
+<tr>
+<td><code>uniform</code></td>
+<td>Uniform</td>
+<td><code>min</code>, <code>max</code></td>
+</tr>
+<tr>
+<td><code>gaussian</code></td>
+<td>Normal</td>
+<td><code>rsd</code></td>
+</tr>
+<tr>
+<td><code>lognormal</code></td>
+<td>Log-normal</td>
+<td><code>rsd</code></td>
+</tr>
+<tr>
+<td><code>lhs</code></td>
+<td>Latin Hypercube</td>
+<td><code>rsd</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="perturbing-kinetic-parameters-too">Perturbing Kinetic Parameters Too<a class="headerlink" href="#perturbing-kinetic-parameters-too" title="Permanent link">&para;</a></h2>
+<p>The initial conditions are one source of variation. The kinetic parameters (<code>Km</code>, <code>Vmax</code>, ...) are another, and they're often more predictive of drug response than initial concentrations. You can perturb both:</p>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">perturbation_type</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span>                     <span class="c1"># for initial conditions</span>
+    <span class="n">perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rsd&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">},</span>
+    <span class="n">param_perturbation_type</span><span class="o">=</span><span class="s1">&#39;lognormal&#39;</span><span class="p">,</span>              <span class="c1"># for kinetic parameters</span>
+    <span class="n">param_perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+    <span class="n">param_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>                                    <span class="c1"># separate seed from initial-cond perturbations</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="reproducibility">Reproducibility<a class="headerlink" href="#reproducibility" title="Permanent link">&para;</a></h2>
+<p>Two seeds control reproducibility:</p>
+<ul>
+<li><code>random_seed</code> on <code>Builder.specify(...)</code> — fixes the <em>network topology</em> and the <em>drug configuration</em>.</li>
+<li><code>seed</code> (and <code>param_seed</code>) on <code>make_dataset_drug_response(...)</code> — fixes the <em>perturbations</em> applied to generate samples.</li>
+</ul>
+<p>Use both for fully reproducible datasets:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>         <span class="c1"># initial-condition perturbations</span>
+    <span class="n">param_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>   <span class="c1"># kinetic-parameter perturbations</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="extended-return-format">Extended Return Format<a class="headerlink" href="#extended-return-format" title="Permanent link">&para;</a></h2>
+<p>For ML research, you usually want more than <code>(X, y)</code> — you want the full timecourse and the kinetic parameters that produced each sample. Use <code>return_timecourse=True</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">,</span>
+    <span class="n">return_timecourse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">X</span>            <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>            <span class="c1"># feature matrix (initial conditions)</span>
+<span class="n">y</span>            <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>            <span class="c1"># target vector</span>
+<span class="n">timecourse</span>   <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;timecourse&#39;</span><span class="p">]</span>  <span class="c1"># DataFrame of numpy arrays — one row per sample</span>
+<span class="n">parameters</span>   <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">]</span>  <span class="c1"># DataFrame of kinetic parameters per sample</span>
+<span class="n">metadata</span>     <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span>    <span class="c1"># success rate, simulation range, etc.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Success rate: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;success_rate&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>timecourse</code> rows contain numpy arrays — one array per species, holding the concentration at each simulation timepoint. To extract, e.g., the last timepoint of each species per sample:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">last_point_features</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">sample_tc</span> <span class="ow">in</span> <span class="n">timecourse</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">last_point_features</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="n">col</span><span class="p">:</span> <span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">sample_tc</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">arr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">})</span>
+<span class="n">X_last</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">last_point_features</span><span class="p">)</span>
+</code></pre></div>
+<p>See <a href="../use_cases/">Use Cases</a> for end-to-end examples that consume this format — parameter estimation, classification, and ML model comparison.</p>
+<h2 id="controlling-the-simulation">Controlling the Simulation<a class="headerlink" href="#controlling-the-simulation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span>
+    <span class="n">simulation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>start</code> — simulation start time</li>
+<li><code>end</code> — simulation end time (default uses the model's <code>simulation_end</code>, typically 10000)</li>
+<li><code>points</code> — number of timepoints to record</li>
+</ul>
+<h2 id="solver-choice">Solver Choice<a class="headerlink" href="#solver-choice" title="Permanent link">&para;</a></h2>
+<p>By default, <code>make_dataset_drug_response</code> uses <code>ScipySolver</code> with <code>jit=True</code>. For other options:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ScipySolver (default, fast with JIT)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># RoadrunnerSolver (robust, full SBML)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;roadrunner&#39;</span><span class="p">)</span>
+
+<span class="c1"># HTTPSolver (remote)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;http&#39;</span><span class="p">,</span>
+                                  <span class="n">solver_endpoint</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000/simulate&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>See <a href="../solving_odes/">Solving ODEs</a> for the comparison, JIT warmup cost, and the trade-offs between solvers.</p>
+<h2 id="feature-analysis-which-species-matter">Feature Analysis: Which Species Matter?<a class="headerlink" href="#feature-analysis-which-species-matter" title="Permanent link">&para;</a></h2>
+<p>In a hierarchical network, the degree 1 species (closest to the drug) usually correlate most strongly with the outcome. To check:</p>
+<p>Top-left: feature correlation matrix. Top-right: feature-target correlation. Bottom: outcome distribution.</p>
+<p><img alt="Feature analysis: correlation matrix, feature-target correlation, and outcome distribution" src="../images/data_generation_feature_analysis.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">correlations</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">correlations</span> <span class="o">=</span> <span class="n">correlations</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">correlations</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 10 features correlated with target:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">correlations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<p>For more sophisticated feature analysis — feature engineering from the full timecourse, comparing ML models across feature representations — see <a href="../use_cases/#use-case-3-comparing-ml-models-on-different-feature-representations">Use Cases</a>.</p>
+<h2 id="exporting-data">Exporting Data<a class="headerlink" href="#exporting-data" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;synthetic_features.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;synthetic_targets.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">combined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;synthetic_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Next: <a href="../use_cases/">Use Cases</a></strong> — finished end-to-end examples that consume the dataset.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../solving_odes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Solving ODEs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Solving ODEs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../use_cases/" class="md-footer__link md-footer__link--next" aria-label="Next: Use Cases">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Use Cases
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.footer", "navigation.top", "navigation.sections", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-config.js"></script>
+      
+    
+  </body>
+</html>

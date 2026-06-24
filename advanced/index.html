@@ -1,0 +1,1551 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Generate virtual cell data using ODE models for ML benchmarking and drug response modeling">
+      
+      
+        <meta name="author" content="Dawson Lan">
+      
+      
+        <link rel="canonical" href="https://synthetic-models.github.io/advanced/">
+      
+      
+        <link rel="prev" href="../use_cases/">
+      
+      
+        <link rel="next" href="../api_reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Advanced - Synthetic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Synthetic" class="md-header__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Synthetic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Synthetic" class="md-nav__button md-logo" aria-label="Synthetic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Synthetic
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Building
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solving_odes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solving ODEs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../obtaining_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Obtaining Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kinetic-parameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinetic Parameter Tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kinetic Parameter Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-tuning-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Tuning Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-via-virtualcell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage via VirtualCell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-tuning-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Tuning Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-linear-cascade-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Linear Cascade Spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-rate-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Rate Equation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Rate Equation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-and-gate-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: AND-gate Activation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Solver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Solver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-scipyintegratesolve_ivp-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: scipy.integrate.solve_ivp Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-regression-to-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Regression to Classification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kinetic-parameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kinetic Parameter Tuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kinetic Parameter Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-tuning-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Tuning Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-via-virtualcell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage via VirtualCell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-tuning-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Tuning Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-linear-cascade-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Linear Cascade Spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-rate-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Rate Equation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Rate Equation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-and-gate-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: AND-gate Activation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-custom-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Solver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Custom Solver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-scipyintegratesolve_ivp-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: scipy.integrate.solve_ivp Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-regression-to-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Regression to Classification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h1>
+<p>Each section on this page is independent — read the one that matches the layer of the pipeline you want to extend. The library's design — three levels of model building, three solver backends, pluggable data-processing — is meant to be extended at every layer.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it extends</th>
+<th>When you'd reach for it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#kinetic-parameter-tuning">Kinetic parameter tuning</a></td>
+<td>Model parameter generation</td>
+<td>Random parameters produced unresponsive dynamics and you want biologically plausible ones</td>
+</tr>
+<tr>
+<td><a href="#writing-a-custom-spec">Writing a custom spec</a></td>
+<td>Model topology</td>
+<td>You want a network shape neither <code>DegreeInteractionSpec</code> nor <code>MichaelisNetworkSpec</code> produces</td>
+</tr>
+<tr>
+<td><a href="#writing-a-custom-rate-equation">Writing a custom rate equation</a></td>
+<td>Reaction kinetics</td>
+<td>You need a rate law the predefined archtypes don't cover</td>
+</tr>
+<tr>
+<td><a href="#writing-a-custom-solver">Writing a custom solver</a></td>
+<td>Simulation engine</td>
+<td>You want to integrate the ODEs using a backend Synthetic doesn't ship</td>
+</tr>
+<tr>
+<td><a href="#from-regression-to-classification">From regression to classification</a></td>
+<td>ML framing of the dataset</td>
+<td>The regression target isn't the right shape for the question you're asking</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="kinetic-parameter-tuning">Kinetic Parameter Tuning<a class="headerlink" href="#kinetic-parameter-tuning" title="Permanent link">&para;</a></h2>
+<p>The <code>KineticParameterTuner</code> generates kinetic parameters that ensure robust signal propagation through the network. Without tuning, random parameter values may produce unresponsive dynamics or 'flat' responses unintentionally.</p>
+<div class="admonition tip">
+<p class="admonition-title">When to use tuning</p>
+<p>Use kinetic tuning whenever you want predictable, responsive network dynamics. It is enabled by default in <code>Builder.specify()</code>. You only need the manual approach below if you're using the low-level API directly.</p>
+</div>
+<h3 id="why-tuning-matters">Why Tuning Matters<a class="headerlink" href="#why-tuning-matters" title="Permanent link">&para;</a></h3>
+<p>In hierarchical signaling networks, signal propagation depends on the balance between forward (activation) and backward (deactivation) reaction rates. The tuner solves the full nonlinear kinetic equations to find parameters where each species reaches a target active percentage.</p>
+<h3 id="usage-via-virtualcell">Usage via VirtualCell<a class="headerlink" href="#usage-via-virtualcell" title="Permanent link">&para;</a></h3>
+<p>Tuning is enabled by default when compiling:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span>
+
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># Kinetic tuning is applied automatically during compile()</span>
+</code></pre></div>
+<p>Customize tuning parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span>
+    <span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">auto_compile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">vc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">use_kinetic_tuner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">active_percentage_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>  <span class="c1"># Target 30-70% active states</span>
+    <span class="n">X_total_multiplier</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>               <span class="c1"># Km_b = X_total * 5.0</span>
+    <span class="n">ki_val</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>                         <span class="c1"># Constant Ki for all inhibitors</span>
+    <span class="n">v_max_f_random_range</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>     <span class="c1"># Forward Vmax range</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="accessing-tuning-results">Accessing Tuning Results<a class="headerlink" href="#accessing-tuning-results" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Target concentrations the tuner aimed for</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">species</span><span class="p">,</span> <span class="n">concentration</span> <span class="ow">in</span> <span class="n">targets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">species</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Regulator-parameter mappings</span>
+<span class="n">regulator_map</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_regulator_parameter_map</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">regulator</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">regulator_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regulator </span><span class="si">{</span><span class="n">regulator</span><span class="si">}</span><span class="s2"> affects: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="direct-usage">Direct Usage<a class="headerlink" href="#direct-usage" title="Permanent link">&para;</a></h3>
+<p>Use <code>KineticParameterTuner</code> without the high-level API:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.DegreeInteractionSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegreeInteractionSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Drug</span><span class="w"> </span><span class="kn">import</span> <span class="n">Drug</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.utils.kinetic_tuner</span><span class="w"> </span><span class="kn">import</span> <span class="n">KineticParameterTuner</span>
+
+<span class="c1"># Create specification</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">DegreeInteractionSpec</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">generate_specifications</span><span class="p">(</span><span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">feedback_density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Add drug</span>
+<span class="n">drug</span> <span class="o">=</span> <span class="n">Drug</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span>
+    <span class="n">default_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">regulation</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1_1&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_2&quot;</span><span class="p">,</span> <span class="s2">&quot;R1_3&quot;</span><span class="p">],</span>
+    <span class="n">regulation_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">add_drug</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
+
+<span class="c1"># Generate and precompile model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">generate_network</span><span class="p">(</span><span class="s2">&quot;MyNetwork&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+
+<span class="c1"># Tune parameters</span>
+<span class="n">tuner</span> <span class="o">=</span> <span class="n">KineticParameterTuner</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">updated_params</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">generate_parameters</span><span class="p">(</span>
+    <span class="n">active_percentage_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+    <span class="n">X_total_multiplier</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">ki_val</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>
+    <span class="n">v_max_f_random_range</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Apply tuned parameters</span>
+<span class="k">for</span> <span class="n">param_name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">updated_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="c1"># Get target concentrations for validation</span>
+<span class="n">target_concentrations</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">get_target_concentrations</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="writing-a-custom-spec">Writing a Custom Spec<a class="headerlink" href="#writing-a-custom-spec" title="Permanent link">&para;</a></h2>
+<p>When neither <code>DegreeInteractionSpec</code> (hierarchical) nor <code>MichaelisNetworkSpec</code> (random Michaelis-Menten) produces the topology you want, write a new spec by subclassing <code>BaseSpec</code>. The contract has two abstract methods:</p>
+<ul>
+<li><code>generate_specifications(**kwargs)</code> — populate the spec's <code>species_list</code> and <code>regulations</code>.</li>
+<li><code>generate_network(network_name, **kwargs) -&gt; ModelBuilder</code> — produce a <code>ModelBuilder</code> ready to simulate.</li>
+</ul>
+<p>The rest of the pipeline (solvers, dataset generation, export) treats the resulting <code>ModelBuilder</code> identically, regardless of which spec produced it.</p>
+<h3 id="example-linear-cascade-spec">Example: Linear Cascade Spec<a class="headerlink" href="#example-linear-cascade-spec" title="Permanent link">&para;</a></h3>
+<p>A linear cascade — N species in a strict chain, each activated by the previous one — is a useful network shape neither shipped spec produces:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.BaseSpec</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Specs.Regulation</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regulation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.ModelBuilder</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Reaction</span><span class="w"> </span><span class="kn">import</span> <span class="n">Reaction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArchtypeCollections</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LinearCascadeSpec</span><span class="p">(</span><span class="n">BaseSpec</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A linear signaling cascade: S0 → S0a → S1 → S1a → ... → SN → SNa.</span>
+<span class="sd">    No branching, no feedback — a pure feed-forward chain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_species</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_species</span> <span class="o">=</span> <span class="n">n_species</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_specifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+        <span class="k">if</span> <span class="n">random_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regulations</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">michaelis_menten</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_species</span><span class="p">):</span>
+            <span class="n">substrate</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">product</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">a&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">species_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">substrate</span><span class="p">,</span> <span class="n">product</span><span class="p">])</span>
+
+            <span class="c1"># Each species is activated by the previous species&#39;s active form</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">prev_active</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">a&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">regulations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Regulation</span><span class="p">(</span>
+                    <span class="n">regulator</span><span class="o">=</span><span class="n">prev_active</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">substrate</span><span class="p">,</span>
+                    <span class="n">reg_type</span><span class="o">=</span><span class="s1">&#39;activate&#39;</span><span class="p">,</span>
+                <span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelBuilder</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="n">network_name</span><span class="p">)</span>
+        <span class="n">mm</span> <span class="o">=</span> <span class="n">ArchtypeCollections</span><span class="o">.</span><span class="n">michaelis_menten</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_species</span><span class="p">):</span>
+            <span class="n">substrate</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">product</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">a&quot;</span>
+            <span class="n">extra_states</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;S</span><span class="si">{</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">a&quot;</span><span class="p">,)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">()</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">Reaction</span><span class="p">(</span>
+                <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">mm</span><span class="p">,</span>
+                <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="n">substrate</span><span class="p">,),</span>
+                <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="n">product</span><span class="p">,),</span>
+                <span class="n">extra_states</span><span class="o">=</span><span class="n">extra_states</span><span class="p">,</span>
+                <span class="n">reaction_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;step_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span> <span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">},</span>
+                <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="n">substrate</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">},</span>
+                <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="n">product</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+            <span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">model</span>
+</code></pre></div>
+<p>Using it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">spec</span> <span class="o">=</span> <span class="n">LinearCascadeSpec</span><span class="p">(</span><span class="n">n_species</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">generate_specifications</span><span class="p">(</span><span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">generate_network</span><span class="p">(</span><span class="s2">&quot;MyChain&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">())</span>
+<span class="c1"># 4 species, 4 reactions, no feedback, no drugs</span>
+</code></pre></div>
+<p>The <code>model</code> returned here is interchangeable with one produced by <code>Builder.specify(...)</code> — pass it to any <a href="../solving_odes/">solver</a>, or wrap it in your own <code>make_dataset_drug_response</code>-style loop.</p>
+<hr />
+<h2 id="writing-a-custom-rate-equation">Writing a Custom Rate Equation<a class="headerlink" href="#writing-a-custom-rate-equation" title="Permanent link">&para;</a></h2>
+<p>If the predefined archtypes in <code>ArchtypeCollections</code> don't cover your kinetics, define a new <code>ReactionArchtype</code>. The constructor takes:</p>
+<ul>
+<li><code>rate_law</code> — a string expression referencing parameter names and placeholder species (<code>&amp;S</code>, <code>&amp;P</code>, <code>&amp;A0</code>, etc.)</li>
+<li><code>parameters</code> — the parameter names the rate law references</li>
+<li><code>reactants</code> / <code>products</code> / <code>extra_states</code> — placeholder species</li>
+</ul>
+<p>Anything you write in <code>rate_law</code> is passed through to the Antimony / SBML backend, so the kinetics are real, not simulated.</p>
+<h3 id="example-and-gate-activation">Example: AND-gate Activation<a class="headerlink" href="#example-and-gate-activation" title="Permanent link">&para;</a></h3>
+<p>A species is activated only when <em>both</em> of two regulators are active simultaneously. This isn't a standard Michaelis-Menten pattern — it needs a multiplicative term in the rate law:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactionArchtype</span><span class="p">,</span> <span class="n">Reaction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.ModelBuilder</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBuilder</span>
+
+<span class="n">and_gate</span> <span class="o">=</span> <span class="n">ReactionArchtype</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;AND-gate activation&#39;</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">,),</span>
+    <span class="n">extra_states</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;&amp;A0&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;A1&#39;</span><span class="p">),</span>    <span class="c1"># two activators, both required</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Vmax&#39;</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">,</span> <span class="s1">&#39;Ka0&#39;</span><span class="p">,</span> <span class="s1">&#39;Ka1&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">),</span>
+    <span class="c1"># Multiplicative activation: rate is high only when both A0 and A1 are high.</span>
+    <span class="c1"># The (Ka0*A0)*(Ka1*A1) term is near zero if either A is near zero.</span>
+    <span class="n">rate_law</span><span class="o">=</span><span class="s1">&#39;Vmax * &amp;S / (Km + &amp;S) * (Ka0*&amp;A0)^n * (Ka1*&amp;A1)^n / ((Ka0*&amp;A0)^n * (Ka1*&amp;A1)^n + 1)&#39;</span><span class="p">,</span>
+    <span class="n">assume_parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Ka0&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;Ka1&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="n">assume_reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;S&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">assume_product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;P&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="n">assume_extra_state_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;&amp;A0&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;&amp;A1&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span>
+    <span class="n">reaction_archtype</span><span class="o">=</span><span class="n">and_gate</span><span class="p">,</span>
+    <span class="n">reactants</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Substrate&#39;</span><span class="p">,),</span>
+    <span class="n">products</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Product&#39;</span><span class="p">,),</span>
+    <span class="n">extra_states</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;TF_A&#39;</span><span class="p">,</span> <span class="s1">&#39;TF_B&#39;</span><span class="p">),</span>     <span class="c1"># both transcription factors must be active</span>
+    <span class="n">reaction_name</span><span class="o">=</span><span class="s1">&#39;and_gate_step&#39;</span><span class="p">,</span>
+    <span class="n">parameters_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Vmax&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;Km&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;Ka0&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;Ka1&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="n">reactant_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Substrate&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="n">product_values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Product&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelBuilder</span><span class="p">(</span><span class="s1">&#39;AND_Gated_Pathway&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_reaction</span><span class="p">(</span><span class="n">rxn</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">precompile</span><span class="p">()</span>
+</code></pre></div>
+<p>The archtype is just a template — instantiate it as many times as needed with different species names and parameter values.</p>
+<hr />
+<h2 id="writing-a-custom-solver">Writing a Custom Solver<a class="headerlink" href="#writing-a-custom-solver" title="Permanent link">&para;</a></h2>
+<p>If you want to integrate the ODEs using a backend Synthetic doesn't ship — a different integrator, a hardware accelerator, a remote compute service — subclass <code>Solver</code>. The contract has two abstract methods:</p>
+<ul>
+<li><code>compile(model_string: str, **kwargs)</code> — accept a model in Antimony or SBML format (or a file path), and prepare an internal model object.</li>
+<li><code>simulate(start: float, stop: float, step: float) -&gt; pd.DataFrame</code> — return a DataFrame with a <code>time</code> column and one column per species.</li>
+</ul>
+<p>The base class also provides <code>set_state_values</code> and <code>set_parameter_values</code> for hot-swapping values between simulations — implement these if your backend supports it.</p>
+<h3 id="example-scipyintegratesolve_ivp-backend">Example: <code>scipy.integrate.solve_ivp</code> Backend<a class="headerlink" href="#example-scipyintegratesolve_ivp-backend" title="Permanent link">&para;</a></h3>
+<p>This is a thin wrapper around <code>scipy.integrate.solve_ivp</code> that uses Antimony to generate the ODE function. It's a minimal working example — production solvers would do much more.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic.Solver.Solver</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">antimony</span><span class="w"> </span><span class="kn">import</span> <span class="n">loadAntimonyModel</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SolveIvpSolver</span><span class="p">(</span><span class="n">Solver</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal ODE solver using scipy.integrate.solve_ivp and Antimony for the model.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ode_func</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">compile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compile_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Load the Antimony model and extract the ODE function + species list.</span>
+        <span class="n">loadAntimonyModel</span><span class="p">(</span><span class="n">compile_str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_species_names</span><span class="p">(</span><span class="n">compile_str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ode_func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_ode_func</span><span class="p">(</span><span class="n">compile_str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_initial_values</span><span class="p">(</span><span class="n">compile_str</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ode_func</span><span class="p">,</span>
+            <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">),</span>
+            <span class="n">y0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span><span class="p">,</span>
+            <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s1">&#39;RK45&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_state_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_values</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">state_values</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_values</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># --- helpers (sketched; full implementation needs sympy or a python SBML parser) ---</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_species_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\s*var\s+(\w+)&#39;</span><span class="p">,</span> <span class="n">model_str</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_ode_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_str</span><span class="p">):</span>
+        <span class="c1"># Real implementations generate the ODE function via sympy (as ScipySolver does)</span>
+        <span class="c1"># or load SBML and use a python SBML library. This is a placeholder.</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Use sympy or a python SBML library here&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_initial_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_str</span><span class="p">):</span>
+        <span class="c1"># Parse initial-value lines from Antimony (e.g. &quot;S1 = 100;&quot;).</span>
+        <span class="n">initials</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+)\s*=\s*([\d.eE+-]+)\s*;&#39;</span><span class="p">,</span> <span class="n">model_str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span><span class="p">:</span>
+                <span class="n">initials</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># Fill missing species with 0</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">initials</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_species_names</span><span class="p">])</span>
+</code></pre></div>
+<p>Using it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">antimony</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_antimony_model</span><span class="p">()</span>
+
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolveIvpSolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">antimony</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+<p>The point isn't to replace <code>ScipySolver</code> — it's to show the surface area: two abstract methods, one optional hot-swap method, and the model-string → timecourse pipeline. Any backend that can ingest Antimony or SBML and emit a DataFrame can be plugged in here.</p>
+<hr />
+<h2 id="from-regression-to-classification">From Regression to Classification<a class="headerlink" href="#from-regression-to-classification" title="Permanent link">&para;</a></h2>
+<p>Synthetic's <code>make_dataset_drug_response</code> produces a <em>regression</em> target — the continuous value of the activated outcome species. Many real ML problems are framed as classification instead: "did this patient respond to the drug, yes or no?" The dataset Synthetic produces is perfectly fine input to a classifier — you just need to threshold the target.</p>
+<p>This is a fully <em>user-side</em> transformation. There's no library helper for it, because the threshold choice is the scientific question you're trying to ask. For a complete worked example, see <a href="../use_cases/#use-case-2-classification-responder-vs-non-responder">Use Case 2 — Classification</a>. The short version:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">synthetic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">make_dataset_drug_response</span>
+
+<span class="n">vc</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="n">specify</span><span class="p">(</span><span class="n">degree_cascades</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_dataset_drug_response</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">cell_model</span><span class="o">=</span><span class="n">vc</span><span class="p">,</span> <span class="n">target_specie</span><span class="o">=</span><span class="s1">&#39;Oa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Threshold y into a binary class. The threshold encodes the question.</span>
+<span class="n">y_class</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Standard scikit-learn from here.</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y_class</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CV accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The threshold can be any of:</p>
+<ul>
+<li>a clinically meaningful cutoff (e.g., "50% reduction in <code>Oa</code> from baseline")</li>
+<li>a percentile of the simulated <code>y</code> distribution (e.g., bottom 25%)</li>
+<li>a value from prior experimental data</li>
+</ul>
+<p>The rest of the pipeline is unchanged — same <code>X</code>, same classifiers, same metrics you would use on any binary classification problem.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../use_cases/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Use Cases">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Use Cases
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../api_reference/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                API Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.footer", "navigation.top", "navigation.sections", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-config.js"></script>
+      
+    
+  </body>
+</html>

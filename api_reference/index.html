@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://synthetic-models.github.io/api_reference/">
       
       
-        <link rel="prev" href="../advanced_features/">
+        <link rel="prev" href="../advanced/">
       
       
         <link rel="next" href="../faq/">
@@ -339,7 +339,7 @@
   <span class="md-ellipsis">
     
   
-    Guides
+    Usage
   
 
     
@@ -355,7 +355,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Usage
   
 
           </label>
@@ -396,14 +396,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../network_and_drug_design/" class="md-nav__link">
+      <a href="../solving_odes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Network & Drug Design
+    Solving ODEs
   
 
     
@@ -424,14 +424,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../solvers_and_simulation/" class="md-nav__link">
+      <a href="../obtaining_data/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Solvers & Simulation
+    Obtaining Data
   
 
     
@@ -452,14 +452,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../data_generation/" class="md-nav__link">
+      <a href="../use_cases/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Data Generation
+    Use Cases
   
 
     
@@ -473,21 +473,44 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+    
+    
+    
+    
+      
         
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Advanced
   
 
     
@@ -495,11 +518,19 @@
   
   
 
-      </a>
-    </li>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
   
 
-              
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -508,70 +539,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../model_export/" class="md-nav__link">
+      <a href="../advanced/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Model Export & Interoperability
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../benchmarking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benchmarking Scenarios
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../advanced_features/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Advanced Features
+    Advanced
   
 
     
@@ -614,10 +589,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -635,8 +610,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10264,7 +10239,7 @@ Returns empty string if no association.</p>
     </div>
 
 </div><h2 id="specifications">Specifications<a class="headerlink" href="#specifications" title="Permanent link">&para;</a></h2>
-<p>Classes for defining network topology, regulations, and drug interactions. See <a href="../network_and_drug_design/">Network &amp; Drug Design</a> for details.</p>
+<p>Classes for defining network topology, regulations, and drug interactions. See <a href="../model_building/#level-2-the-spec-classes">Model Building</a> for details.</p>
 
 
 <div class="doc doc-object doc-class">
@@ -14875,7 +14850,7 @@ Input:
     </div>
 
 </div><h2 id="solvers">Solvers<a class="headerlink" href="#solvers" title="Permanent link">&para;</a></h2>
-<p>ODE simulation backends. Both concrete solvers inherit from the abstract <code>Solver</code> base class, which defines the <code>compile()</code> and <code>simulate()</code> interface. See <a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> for usage.</p>
+<p>ODE simulation backends. Both concrete solvers inherit from the abstract <code>Solver</code> base class, which defines the <code>compile()</code> and <code>simulate()</code> interface. See <a href="../solving_odes/">Solving ODEs</a> for usage.</p>
 
 
 <div class="doc doc-object doc-class">
@@ -16671,7 +16646,7 @@ returns True if the state variable was set successfully, False otherwise.</p>
     </div>
 
 </div><h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
-<p>Helpers for parameter tuning, feature generation, and dataset creation. See <a href="../data_generation/">Data Generation</a>, <a href="../advanced_features/">Advanced Features</a>, and <a href="../benchmarking/">Benchmarking</a> for context.</p>
+<p>Helpers for parameter tuning, feature generation, and dataset creation. See <a href="../obtaining_data/">Obtaining Data</a>, <a href="../advanced/">Advanced</a>, and <a href="../use_cases/">Use Cases</a> for context.</p>
 
 
 <div class="doc doc-object doc-class">
@@ -19440,7 +19415,7 @@ to generate target values using specified methods.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../advanced_features/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Advanced Features">
+          <a href="../advanced/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Advanced">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -19450,7 +19425,7 @@ to generate target values using specified methods.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Advanced Features
+                Advanced
               </div>
             </div>
           </a>

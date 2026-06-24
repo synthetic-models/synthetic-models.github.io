@@ -337,7 +337,7 @@
   <span class="md-ellipsis">
     
   
-    Guides
+    Usage
   
 
     
@@ -353,7 +353,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Usage
   
 
           </label>
@@ -394,14 +394,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../network_and_drug_design/" class="md-nav__link">
+      <a href="../solving_odes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Network & Drug Design
+    Solving ODEs
   
 
     
@@ -422,14 +422,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../solvers_and_simulation/" class="md-nav__link">
+      <a href="../obtaining_data/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Solvers & Simulation
+    Obtaining Data
   
 
     
@@ -450,14 +450,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../data_generation/" class="md-nav__link">
+      <a href="../use_cases/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Data Generation
+    Use Cases
   
 
     
@@ -471,21 +471,44 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+    
+    
+    
+    
+      
         
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Advanced
   
 
     
@@ -493,11 +516,19 @@
   
   
 
-      </a>
-    </li>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
   
 
-              
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -506,70 +537,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../model_export/" class="md-nav__link">
+      <a href="../advanced/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Model Export & Interoperability
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../benchmarking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benchmarking Scenarios
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../advanced_features/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Advanced Features
+    Advanced
   
 
     
@@ -612,10 +587,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -633,8 +608,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -943,7 +918,7 @@ uv<span class="w"> </span>sync
 <li><code>&amp;</code> — main reactants/products and regulators (e.g., <code>&amp;S</code>, <code>&amp;P</code>, <code>&amp;A0</code>)</li>
 <li><code>?</code> — reverse-only regulators used in reversible reactions (e.g., <code>?A0</code>)</li>
 </ul>
-<p>When a <code>Reaction</code> is created, these placeholders are replaced with actual species names. See <a href="../model_building/#layer-1-reactionarchtype-the-template">Model Building</a> for details.</p>
+<p>When a <code>Reaction</code> is created, these placeholders are replaced with actual species names. See <a href="../model_building/">Model Building</a> for details.</p>
 </details>
 <h2 id="simulation">Simulation<a class="headerlink" href="#simulation" title="Permanent link">&para;</a></h2>
 <details class="question">
@@ -954,7 +929,7 @@ uv<span class="w"> </span>sync
 <li><strong>Simulation too short</strong> — the network may not have reached steady state. Increase <code>stop</code> time.</li>
 <li><strong>Initial conditions are zero</strong> — check that species have non-zero initial concentrations.</li>
 </ol>
-<p>See <a href="../advanced_features/#kinetic-parameter-tuning">Kinetic Parameter Tuning</a> for the tuning guide.</p>
+<p>See <a href="../advanced/#kinetic-parameter-tuning">Kinetic Parameter Tuning</a> for the tuning guide.</p>
 </details>
 <details class="question">
 <summary>Which solver should I use?</summary>
@@ -988,7 +963,7 @@ uv<span class="w"> </span>sync
 </tr>
 </tbody>
 </table>
-<p>See <a href="../solvers_and_simulation/#solver-selection-guide">Solver Selection Guide</a> for the full comparison.</p>
+<p>See <a href="../solving_odes/#choosing-a-solver">Solving ODEs</a> for the full comparison.</p>
 </details>
 <details class="question">
 <summary>Why is JIT compilation slow on first run?</summary>
@@ -1003,7 +978,7 @@ uv<span class="w"> </span>sync
 <span class="c1"># Correct:</span>
 <span class="n">solver</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_sbml_model</span><span class="p">())</span>
 </code></pre></div>
-<p><code>ScipySolver</code> accepts Antimony. See <a href="../solvers_and_simulation/">Solvers &amp; Simulation</a> for both approaches.</p>
+<p><code>ScipySolver</code> accepts Antimony. See <a href="../solving_odes/">Solving ODEs</a> for both approaches.</p>
 </details>
 <h2 id="data-generation">Data Generation<a class="headerlink" href="#data-generation" title="Permanent link">&para;</a></h2>
 <details class="question">
@@ -1034,7 +1009,7 @@ uv<span class="w"> </span>sync
     <span class="n">perturbation_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;base_shape&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;max_shape&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>See <a href="../data_generation/#perturbation-strategies">Perturbation Strategies</a> for all available types.</p>
+<p>See <a href="../obtaining_data/#what-gets-perturbed">Obtaining Data</a> for all available types.</p>
 </details>
 <details class="question">
 <summary>Why is my dataset success rate low?</summary>
